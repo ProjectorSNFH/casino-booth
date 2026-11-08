@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 플레이</title>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#07080b;--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh;display:flex;justify-content:center;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0}
+.app{position:relative;z-index:1;width:100%;max-width:420px;min-height:100dvh;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 46px) 16px 96px}
+.nz{position:relative;border-radius:22px}
+.nz::before{content:"";position:absolute;inset:-4px;border-radius:inherit;background:linear-gradient(120deg,#ff2bd6,#2b8cff,#22ffc4);filter:blur(16px);opacity:.5;animation:hue 9s linear infinite}
+@keyframes hue{to{filter:blur(16px) hue-rotate(360deg)}}
+.gl{position:relative;border-radius:inherit;background:rgba(22,24,32,.55);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.hd{margin-bottom:16px;border-radius:18px}.hd .gl{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+.logo{font-family:Monoton,cursive;font-size:20px;letter-spacing:.04em;text-shadow:0 0 12px #ff2bd6aa,0 0 24px #2b8cff88}
+.idb{text-align:right;line-height:1}.idb small{display:block;font-size:10px;color:var(--mut);margin-bottom:3px}.idb b{font:700 26px 'Space Grotesk';color:var(--amb)}
+.s{display:none;flex:1;flex-direction:column;animation:in .3s ease}.s.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+h1{font-size:21px;margin:0 0 6px}p{color:var(--mut);font-size:14px;line-height:1.6;margin:0 0 20px}
+.c{padding:20px}.center{text-align:center}.mid{margin:auto 0;text-align:center;width:100%}.ic{font-size:34px;margin-bottom:12px}
+button{font:inherit;cursor:pointer}
+.btn{width:100%;padding:15px;border-radius:14px;font-weight:600;font-size:15px;background:none;border:1.5px solid #fff;color:#fff;position:relative;overflow:hidden}
+.bg{background:var(--amb);border-color:var(--amb);color:#111}.bo{border-color:var(--red);color:var(--red)}.bg:disabled{opacity:.4}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .65s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
+.sp{position:relative;width:46px;height:46px;margin:0 auto 20px}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 38px/1 'Space Grotesk',sans-serif;font-style:normal;opacity:0;animation:su 2s infinite}.sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}@keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:auto}
+.k{background:none;border:0;color:var(--ink);font:500 24px 'Space Grotesk';height:58px;border-radius:29px}
+.coin{width:34px;height:34px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff2b8,#f0a83a 65%,#b9741a);box-shadow:0 0 14px #f0a83a88;animation:sc 2.4s linear infinite}@keyframes sc{50%{transform:scaleX(.15)}}
+#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:7px}
+#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}#dv .on{background:var(--amb);color:#111}
+
+.qrc{display:flex;align-items:center;gap:16px;padding:16px}.qrw{background:#fff;border-radius:16px;padding:10px;flex:none;line-height:0}
+.uidt{font:600 19px/1.5 'Space Grotesk';letter-spacing:.14em;flex:1;text-align:center}
+.coinc{padding:14px 18px 16px;text-align:center}.coinc small{display:block;text-align:left;font-size:12px;color:var(--mut)}.coinc .coin{width:60px;height:60px;margin:6px auto 8px}.coinc b{font:700 40px 'Space Grotesk';color:var(--amb)}
+#ordb{margin-top:14px}
+.big{font:700 54px 'Space Grotesk';color:var(--amb);margin:8px 0}
+.cap{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:5;border-radius:28px;display:none}.cap.on{display:block}
+.cap .gl{display:flex;align-items:center;gap:10px;padding:7px 20px 7px 9px;box-shadow:0 14px 30px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.2)}
+.cap small{display:block;font-size:10px;color:var(--mut)}.cap b{font:700 18px 'Space Grotesk';color:var(--amb)}
+.dr{stroke-dasharray:160;stroke-dashoffset:160;animation:d 1s ease forwards}.dr2{stroke-dasharray:50;stroke-dashoffset:50;animation:d .5s .8s ease forwards}@keyframes d{to{stroke-dashoffset:0}}
+#done.on{animation:in .3s,fo .6s 2.3s forwards}@keyframes fo{to{opacity:0}}
+#grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pr{padding:10px;text-align:center}
+.ph{aspect-ratio:1;border-radius:14px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;margin-bottom:8px}
+.ph i{position:absolute;inset:0;border-radius:14px;background:#000a;display:flex;align-items:center;justify-content:center;font:600 15px Inter;font-style:normal}
+.pr b{display:block;font-size:14px}.pr em{display:block;font:700 15px 'Space Grotesk';color:var(--amb);font-style:normal;margin:2px 0 8px}
+.qt{display:flex;align-items:center;justify-content:space-between}.qt button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:none;color:#fff;font-size:18px}.qt span{font:600 16px 'Space Grotesk'}
+.ft{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:calc(100% - 32px);max-width:388px;z-index:6;display:none}.ft .gl{display:flex;align-items:center;gap:10px;padding:10px}.ft span{font:600 14px 'Space Grotesk';color:var(--amb);white-space:nowrap}
+#shop{padding-bottom:100px}.ov{position:fixed;inset:0;background:#000b;z-index:30;display:none;align-items:center;justify-content:center;padding:24px}.ov.on{display:flex}
+.ov .nz{width:100%;max-width:360px}.tt{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#ff6b7a;color:#111;font-weight:600;font-size:13px;padding:10px 16px;border-radius:20px;z-index:40;display:none}
+</style></head><body><canvas id="bg"></canvas><div id="dv"></div><div class="tt" id="tt"></div>
+<div class="ov" id="ov"><div class="nz"><div class="gl c center"><p id="ot" style="color:#fff"></p><button class="btn" onclick="cancelCart()">취소</button></div></div></div>
+<div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div>
+<section class="s on" id="home">
+<div class="nz"><div class="gl qrc"><div class="qrw"><div id="qr"></div></div><div class="uidt" id="uidt"></div></div></div>
+<div class="nz" style="margin-top:14px"><div class="gl coinc"><small>코인</small><div class="coin"></div><b class="cv">42</b></div></div>
+<button class="btn bg" id="ordb" hidden onclick="go('warn')">상품 주문하기</button></section>
+<section class="s" id="bet"><div class="nz"><div class="gl c center"><small style="color:var(--mut)">할리갈리 · 베팅 금액</small><div class="big" id="ba">0</div><small style="color:var(--mut)">보유 <span class="cv">42</span> 코인</small></div></div>
+<div id="kp"></div><div class="row" style="margin-top:12px"><button class="btn bo" onclick="go('home')">취소</button><button class="btn bg" onclick="+bet>0&&go('wait')">베팅 확정</button></div></section>
+<section class="s" id="wait"><div class="mid"><div class="sp"></div><h1>스태프 승인 대기</h1><p>할리갈리 · 베팅 <span id="wb">0</span>코인<br>스태프가 확인하면 게임이 시작됩니다.</p></div></section>
+<section class="s" id="match"><div class="mid"><div class="nz"><div class="gl c center"><small style="color:var(--mut)">할리갈리</small><div class="big" id="mb">0</div><small style="color:var(--mut)">게임 진행 중 · 결과는 스태프가 승인합니다</small></div></div></div></section>
+<section class="s" id="result"><div class="mid"><div class="nz"><div class="gl c center"><div class="ic">🏆</div><h1>승리 +13</h1><p>정산에 반영될 결과입니다. 확인만 눌러주세요.</p><button class="btn" onclick="go('done')">확인</button></div></div></div></section>
+<section class="s" id="done"><div class="mid"><svg viewBox="0 0 52 52" width="92"><circle class="dr" cx="26" cy="26" r="24" fill="none" stroke="#5fe0a0" stroke-width="2.5"/><path class="dr2" d="M14 27l8 8 16-17" fill="none" stroke="#5fe0a0" stroke-width="3" stroke-linecap="round"/></svg><h1 style="margin-top:16px">정산 완료</h1><p>+13 코인 · 곧 홈으로 돌아갑니다</p></div></section>
+<section class="s" id="warn"><div class="mid"><div class="nz"><div class="gl c center"><div class="ic">⚠️</div><h1>상품 구매 안내</h1><p style="color:#fff">상품을 구매 완료할 경우 게임을 더 이상 참여할 수 없으며, 상품 배부 후 퇴실해야합니다.</p><p>스태프에게 확인을 받기 전까지 취소할 수 있습니다.</p><div class="row"><button class="btn" onclick="go('home')">취소</button><button class="btn bg" onclick="go('shop')">확인했으며<br>구매 진행</button></div></div></div></div></section>
+<section class="s" id="shop"><h1>상품 구매</h1><p>보유 <span class="cv">42</span> 코인</p><div id="grid"></div></section>
+<section class="s" id="order"><div class="mid"><div class="sp"></div><h1>주문 승인 대기</h1><p>스태프가 확인하면 주문이 완료됩니다.<br>확인 전까지 취소할 수 있어요.</p><button class="btn" onclick="go('home')">주문 취소</button></div></section>
+<div class="nz cap" id="cap"><div class="gl"><div class="coin"></div><div><small>코인</small><b class="cv">42</b></div></div></div>
+<div class="ft" id="ft"><div class="nz"><div class="gl"><button class="btn" onclick="go('home')">나가기</button><span id="sum"></span><button class="btn bg" id="dn" onclick="go('order')">완료</button></div></div></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+(()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);
+const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.07+.5*k})`;x.beginPath();x.arc(u,y,1+1.3*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
+addEventListener('pointerdown',e=>{const t=e.target.closest('.rp,.btn');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),650)});
+function mk(id,ic,t,d,btn){const s=document.createElement('section');s.className='s';s.id=id;s.innerHTML=`<div class="mid"><div class="nz"><div class="gl c center"><div class="ic">${ic}</div><h1>${t}</h1><p>${d}</p>${btn||''}</div></div></div>`;$('.app').appendChild(s)}
+function go(n){$$('.s').forEach(e=>e.classList.toggle('on',e.id===n));$$('#dv button').forEach(b=>b.classList.toggle('on',b.dataset.n===n));window.hook&&hook(n)}
+function dev(o){for(const k in o){const e=document.createElement('button');e.textContent=o[k];e.dataset.n=k;e.onclick=()=>window.demo&&demo[k]?demo[k]():go(k);$('#dv').appendChild(e)}}
+function keypad(el,left,k,d,l){el.className='kp';[1,2,3,4,5,6,7,8,9,'L',0,'D'].forEach(v=>{const b=document.createElement('button');b.className='k rp';b.textContent=v==='L'?left:v==='D'?'⌫':v;if(v==='L'&&!left)b.style.visibility='hidden';b.onclick=()=>v==='D'?d():v==='L'?l():k(String(v));el.appendChild(b)})}
+
+mk('limit','✕','참여 횟수 제한 도달','이 게임에 참여할 수 있는 횟수 제한에 도달했습니다.<br>다른 게임을 이용해 주세요.','<button class="btn" onclick="go(\'home\')">확인</button>');
+mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
+let coins=42,plays=1,bet='0',cart={},sold={};
+const A='0123456789ABCDEFGHJKMNPQRSTVWXYZ',UID=Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>A[b%32]).join('');
+new QRCode($('#qr'),{text:UID,width:112,height:112,correctLevel:QRCode.CorrectLevel.M});$('#uidt').innerHTML=UID.match(/.{4}/g).join('<br>');
+const rbet=()=>$('#ba').textContent=bet,cv=()=>$$('.cv').forEach(e=>e.textContent=coins);
+keypad($('#kp'),'전액',d=>{bet=bet==='0'?d:bet+d;if(+bet>coins)bet=String(coins);rbet()},()=>{bet=bet.length>1?bet.slice(0,-1):'0';rbet()},()=>{bet=String(coins);rbet()});
+const P=[['마이쥬',3,'🍬'],['마카로니',7,'🍝'],['초코파이',9,'🍫'],['쌀과자',5,'🍘'],['젤리스트로우',7,'🍭']],tot=()=>P.reduce((s,p)=>s+p[1]*(cart[p[0]]||0),0);
+function toast(m){const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+function rshop(){$('#grid').innerHTML=P.map(p=>{const q=cart[p[0]]||0,so=sold[p[0]];return `<div class="nz"><div class="gl pr"><div class="ph">${p[2]}${so?'<i>품절</i>':''}</div><b>${p[0]}</b><em>${p[1]}C</em><div class="qt"><button class="rp" onclick="qty('${p[0]}',-1)">−</button><span>${q}</span><button class="rp" onclick="qty('${p[0]}',1)">+</button></div></div></div>`}).join('');
+const bad=P.some(p=>sold[p[0]]&&cart[p[0]]);$('#sum').textContent=tot()+'C';$('#dn').disabled=!tot()||bad;if(bad){$('#ot').textContent='담아둔 상품이 품절되었습니다. 취소 후 홈에서 다시 선택해주세요.';$('#ov').classList.add('on')}}
+function qty(n,d){const q=(cart[n]||0)+d;if(q<0||sold[n])return;if(d>0&&tot()+P.find(p=>p[0]===n)[1]>coins)return toast('보유한 코인보다 많습니다.');cart[n]=q;rshop()}
+function cancelCart(){cart={};$('#ov').classList.remove('on');go('home')}
+const CAP=['bet','wait','match','result','done','limit','warn','shop','order'];
+window.hook=n=>{$('#cap').classList.toggle('on',CAP.includes(n));$('#cap').style.bottom=n==='shop'?'86px':'14px';$('#ft').style.display=n==='shop'?'block':'none';
+ if(n==='home'){$('#ordb').hidden=plays<2}if(n==='bet'){bet='0';rbet()}if(n==='wait')$('#wb').textContent=bet;if(n==='match')$('#mb').textContent=bet;
+ if(n==='done'){coins+=13;plays++;setTimeout(()=>$('#done').classList.contains('on')&&go('home'),2900)}if(n==='shop')rshop();cv()};
+window.demo={home2:()=>{plays=2;go('home')},sold:()=>{sold['쌀과자']=1;go('shop')}};
+dev({home:'홈',home2:'홈(2회+)',bet:'베팅',wait:'승인대기',match:'진행',result:'결과확인',done:'정산완료',limit:'횟수제한',warn:'상점경고',shop:'상점',sold:'품절시연',order:'주문대기',err:'오류'});
+go('home');
+$$('.sp').forEach(e=>e.innerHTML='<i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i>');</script></body></html>

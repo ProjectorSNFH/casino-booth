@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 운영진 코드 입력</title>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#07080b;--p:rgba(22,24,32,.86);--ln:rgba(255,255,255,.12);--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:14px Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh}
+#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh;padding-top:34px}
+button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
+.tb{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--ln);background:var(--p);backdrop-filter:blur(8px)}.logo{font:17px Monoton,cursive;color:var(--amb)}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--ln);background:var(--p);font-weight:600}.btn.g{background:var(--amb);color:#111;border-color:var(--amb)}.btn.r{border-color:#6a2c33;color:var(--red);background:none}.btn.w{background:none;border-color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}.big{width:100%;padding:18px;font-size:17px}
+.in{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--ln);background:rgba(0,0,0,.35);color:#fff;font:14px Inter}.in:focus{outline:0;border-color:var(--amb)}
+.cd{background:var(--p);border:1px solid var(--ln);border-radius:16px;backdrop-filter:blur(8px)}.c{padding:20px}.mu{color:var(--mut);font-size:12px}.bn{font:700 44px 'Space Grotesk';color:var(--amb)}.er2{color:var(--red);font-size:12.5px;margin:8px 0;min-height:16px}
+.sp{position:relative;width:40px;height:40px;margin:30px auto}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 32px/1 'Space Grotesk';font-style:normal;opacity:0;animation:su 2s infinite}.sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}
+@keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
+#er{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);align-items:center;justify-content:center;text-align:center;padding:24px}#er.on{display:flex}#er h1{font-size:20px;margin:10px 0 6px}#er p{color:var(--mut);margin:0 0 20px}
+.tt{position:fixed;top:48px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
+#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:6px}#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}
+.tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--ln)}.tag.a{color:var(--grn);border-color:#2c5a45}.tag.p{color:var(--amb);border-color:#5a4718}.tag.b{color:var(--red);border-color:#6a2c33}.tag.d{color:#7a828a}
+.hv .btn:hover{transform:translateY(-1px);filter:brightness(1.18)}.hv tbody tr:hover{background:#ffffff08}.btn{transition:.15s}
+.box{max-width:420px;margin:0 auto;padding:26px 18px;min-height:calc(100dvh - 34px);display:flex;flex-direction:column}.scr{display:none;flex-direction:column;flex:1}.scr.on{display:flex}h1{font-size:21px;margin:0 0 6px}p{color:var(--mut);line-height:1.6;margin:0 0 20px}
+.ci{width:100%;text-align:center;font:700 34px 'Space Grotesk';letter-spacing:.14em;padding:18px 0;border-radius:14px;border:1px solid var(--ln);background:rgba(0,0,0,.35);color:#fff;margin-bottom:12px}.ci:focus{outline:0;border-color:var(--amb)}
+.cl{margin-top:auto;border:1px solid var(--ln);border-radius:12px;padding:4px 16px;background:var(--p)}.cl div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--ln);font-size:13px}.cl div:last-child{border:0}.cl span{color:var(--mut)}.cl b{font-family:'Space Grotesk'}
+.mid{margin:auto 0;text-align:center}.rb{background:var(--p);border:1px solid var(--ln);border-radius:14px;padding:20px;margin-bottom:16px}.rb .bn{font-size:30px}</style></head><body><canvas id="bg"></canvas><div id="dv"></div><div class="tt" id="tt"></div>
+<div id="er"><div><div style="font-size:34px">🌐</div><h1>오류가 발생했습니다</h1><p>연결 지연 또는 연결하는 중에 오류가 발생하였습니다.</p><button class="btn g" onclick="location.reload()">↻ 새로고침</button></div></div>
+<div class="wr"><div class="tb"><span class="logo">CASINO</span><span class="mu">운영진 전용</span></div><div class="box">
+<section class="scr on" id="in"><h1>코드를 입력하세요</h1><p>스태프 코드 4자리를 입력하면 자동으로 확인합니다.</p><input class="ci" id="ci" maxlength="4" autocomplete="off" autocapitalize="off" placeholder="____"><div class="er2" id="e1" style="text-align:center"></div>
+<div class="cl" id="cl"></div></section>
+<section class="scr" id="ld"><div class="mid"><div id="ls"></div><h1>확인 중</h1><p>잠시만 기다려주세요.</p></div></section>
+<section class="scr" id="pn"><h1>운영 PIN 입력</h1><p id="pd"></p><input class="ci" id="pi" type="password" inputmode="numeric" maxlength="4" placeholder="••••"><div class="er2" id="e2" style="text-align:center"></div><button class="btn w big rp" onclick="back()">다른 코드 입력</button></section>
+<section class="scr" id="ok"><div class="mid"><div class="rb"><div class="mu" id="ok1"></div><div class="bn" id="ok2"></div></div><button class="btn g big rp" onclick="go()">이 화면으로 이동</button><button class="btn w big rp" style="margin-top:10px" onclick="back()">다른 코드 입력</button></div></section>
+<section class="scr" id="bad"><div class="mid"><div style="font-size:34px">❓</div><h1>유효하지 않은 코드입니다</h1><p>코드를 다시 확인해주세요.</p><button class="btn w big rp" onclick="back()">다시 입력하기</button></div></section>
+<section class="scr" id="lk"><div class="mid"><div style="font-size:34px">🔒</div><h1>잠시 후 다시 시도해주세요</h1><p>입력 시도가 너무 많습니다.</p><button class="btn w big rp" onclick="back()">처음으로</button></div></section></div></div><script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+(()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
+addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
+const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2400)};
+window.FAIL=false;const lat=()=>new Promise((r,j)=>setTimeout(()=>window.FAIL?j(1):r(),300)),run=async f=>{try{await f()}catch(e){$('#er').classList.add('on')}};
+const rn=()=>Array.from(crypto.getRandomValues(new Uint8Array(5)),b=>'abcdefghijklmnopqrstuvwxyz'[b%26]).join('');
+function dev(o){for(const k in o){const b=document.createElement('button');b.textContent=k;b.className='rp';b.onclick=o[k];$('#dv').appendChild(b)}}
+
+
+const V={"suc1": {"n": "발급 데스크", "u": "/staff/suc1.html", "pin": 0}, "suc2": {"n": "정정 (Advanced)", "u": "/staff/suc2.html", "pin": 1}, "shp1": {"n": "상품 승인", "u": "/staff/shp1.html", "pin": 1}, "shp2": {"n": "상품 배부", "u": "/staff/shp2.html", "pin": 0}, "hg21": {"n": "할리갈리", "u": "/staff/hg21.html", "pin": 0}, "stm1": {"n": "꼬치의 달인", "u": "/staff/stm1.html", "pin": 0}, "ayh1": {"n": "참참참", "u": "/staff/ayh1.html", "pin": 0}, "jks1": {"n": "조커 뽑기", "u": "/staff/jks1.html", "pin": 0}, "rdb1": {"n": "랜덤 공", "u": "/staff/rdb1.html", "pin": 0}, "rtc1": {"n": "테이블 축구", "u": "/staff/rtc1.html", "pin": 0}, "tbs1": {"n": "명예의 전당 (TV)", "u": "/staff/tbs1.html", "pin": 0}};let tgt=null,tries=0,lock=0;const sc=n=>$$('.scr').forEach(e=>e.classList.toggle('on',e.id===n));
+$('#ls').innerHTML=SUIT;$('#cl').innerHTML=Object.entries(V).map(([k,v])=>`<div><span>${v.n}</span><b>${k}</b></div>`).join('');
+/* 서버 어댑터: POST /staff/enter {code,pin} → 스태프 JWT. PIN 검증/시도 횟수 제한은 서버에서 합니다 (현재 PIN: 1234 목업) */
+const API={async code(c){await lat();return V[c]||null},async pin(p){await lat();if(lock>Date.now())throw'lock';return p==='1234'}};
+const back=()=>{$('#ci').value='';$('#pi').value='';$('#e1').textContent='';$('#e2').textContent='';sc('in');$('#ci').focus()};
+$('#ci').addEventListener('input',e=>{e.target.value=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,4);if(e.target.value.length===4){e.target.blur();chk(e.target.value)}});
+const chk=c=>run(async()=>{sc('ld');const v=await API.code(c);if(!v){sc('bad');return}tgt=v;if(v.pin){$('#pd').textContent=`${v.n} 화면은 PIN이 필요합니다.`;tries=0;sc('pn');$('#pi').focus()}else ok()});
+function ok(){$('#ok1').textContent=tgt.pin?'PIN 확인 완료':'코드 확인 완료';$('#ok2').textContent=tgt.n;sc('ok')}
+const go=()=>{location.href=tgt.u};
+$('#pi').addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,4);if(e.target.value.length===4)run(async()=>{try{if(await API.pin(e.target.value)){ok()}else{tries++;e.target.value='';if(tries>=5){lock=Date.now()+30000;sc('lk')}else $('#e2').textContent=`PIN이 일치하지 않습니다 (${tries}/5)`}}catch(x){if(x==='lock')sc('lk');else throw x}})});
+dev({'코드입력':back,'수동: hg21':()=>chk('hg21'),'수동: suc2(PIN)':()=>chk('suc2'),'잘못된 코드':()=>chk('zzzz'),'오류':()=>$('#er').classList.add('on')});
+</script></body></html>

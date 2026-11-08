@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 이용 제한</title>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#07080b;--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh;display:flex;justify-content:center;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0}
+.app{position:relative;z-index:1;width:100%;max-width:420px;min-height:100dvh;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 46px) 16px 96px}
+.nz{position:relative;border-radius:22px}
+.nz::before{content:"";position:absolute;inset:-4px;border-radius:inherit;background:linear-gradient(120deg,#ff2bd6,#2b8cff,#22ffc4);filter:blur(16px);opacity:.5;animation:hue 9s linear infinite}
+@keyframes hue{to{filter:blur(16px) hue-rotate(360deg)}}
+.gl{position:relative;border-radius:inherit;background:rgba(22,24,32,.55);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.hd{margin-bottom:16px;border-radius:18px}.hd .gl{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+.logo{font-family:Monoton,cursive;font-size:20px;letter-spacing:.04em;text-shadow:0 0 12px #ff2bd6aa,0 0 24px #2b8cff88}
+.idb{text-align:right;line-height:1}.idb small{display:block;font-size:10px;color:var(--mut);margin-bottom:3px}.idb b{font:700 26px 'Space Grotesk';color:var(--amb)}
+.s{display:none;flex:1;flex-direction:column;animation:in .3s ease}.s.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+h1{font-size:21px;margin:0 0 6px}p{color:var(--mut);font-size:14px;line-height:1.6;margin:0 0 20px}
+.c{padding:20px}.center{text-align:center}.mid{margin:auto 0;text-align:center;width:100%}.ic{font-size:34px;margin-bottom:12px}
+button{font:inherit;cursor:pointer}
+.btn{width:100%;padding:15px;border-radius:14px;font-weight:600;font-size:15px;background:none;border:1.5px solid #fff;color:#fff;position:relative;overflow:hidden}
+.bg{background:var(--amb);border-color:var(--amb);color:#111}.bo{border-color:var(--red);color:var(--red)}.bg:disabled{opacity:.4}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .65s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
+.sp{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:var(--amb);animation:r .85s linear infinite;margin:0 auto 20px}@keyframes r{to{transform:rotate(360deg)}}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:auto}
+.k{background:none;border:0;color:var(--ink);font:500 24px 'Space Grotesk';height:58px;border-radius:29px}
+.coin{width:34px;height:34px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff2b8,#f0a83a 65%,#b9741a);box-shadow:0 0 14px #f0a83a88;animation:sc 2.4s linear infinite}@keyframes sc{50%{transform:scaleX(.15)}}
+#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:7px}
+#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}#dv .on{background:var(--amb);color:#111}
+</style></head><body><canvas id="bg"></canvas><div id="dv"></div><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div><script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+(()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);
+const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.07+.5*k})`;x.beginPath();x.arc(u,y,1+1.3*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
+addEventListener('pointerdown',e=>{const t=e.target.closest('.rp,.btn');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),650)});
+function mk(id,ic,t,d,btn){const s=document.createElement('section');s.className='s';s.id=id;s.innerHTML=`<div class="mid"><div class="nz"><div class="gl c center"><div class="ic">${ic}</div><h1>${t}</h1><p>${d}</p>${btn||''}</div></div></div>`;$('.app').appendChild(s)}
+function go(n){$$('.s').forEach(e=>e.classList.toggle('on',e.id===n));$$('#dv button').forEach(b=>b.classList.toggle('on',b.dataset.n===n));window.hook&&hook(n)}
+function dev(o){for(const k in o){const e=document.createElement('button');e.textContent=o[k];e.dataset.n=k;e.onclick=()=>window.demo&&demo[k]?demo[k]():go(k);$('#dv').appendChild(e)}}
+function keypad(el,left,k,d,l){el.className='kp';[1,2,3,4,5,6,7,8,9,'L',0,'D'].forEach(v=>{const b=document.createElement('button');b.className='k rp';b.textContent=v==='L'?left:v==='D'?'⌫':v;if(v==='L'&&!left)b.style.visibility='hidden';b.onclick=()=>v==='D'?d():v==='L'?l():k(String(v));el.appendChild(b)})}
+
+mk('exited','👋','퇴장 처리되었습니다','재참여가 불가능합니다.<br>이용해주셔서 감사합니다.');
+mk('banned','⛔','이용이 제한되었습니다','운영진에 의해 카드 이용이 제한되었습니다.<br>발급 데스크로 문의해주세요.');
+mk('kicked','📱','다른 기기에서 연결되었습니다','이 기기의 이용이 종료되었습니다.');
+mk('expired','⏳','이용 시간이 종료되었습니다','해당 회차 운영이 마감되었습니다.<br>참여해주셔서 감사합니다.');
+mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
+window.hook=n=>{$('.hd .idb').style.display=n==='err'?'none':''};
+dev({exited:'퇴장',banned:'차단',kicked:'다른기기',expired:'회차종료',err:'오류'});go('exited');
+</script></body></html>

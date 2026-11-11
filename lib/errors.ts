@@ -18,6 +18,7 @@ export const ERRORS = {
   // 인증
   UNAUTHORIZED:  { status: 401, message: '로그인이 필요합니다.' },
   STALE_TOKEN:   { status: 401, message: '다른 기기에서 연결되어 이 기기의 이용이 종료되었습니다.' },
+  PIN_REQUIRED:  { status: 401, message: 'PIN이 필요합니다.' },
   WRONG_PIN:     { status: 401, message: 'PIN이 일치하지 않습니다.' },
   FORBIDDEN:     { status: 403, message: '권한이 없습니다.' },
 

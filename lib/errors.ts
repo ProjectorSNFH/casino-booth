@@ -31,6 +31,7 @@ export const ERRORS = {
   NO_ORDER:      { status: 404, message: '주문을 찾을 수 없습니다.' },
   NO_CLAIM:      { status: 404, message: '확인할 요청이 없습니다.' },
   NOT_IN_MATCH:  { status: 404, message: '게임에 참여 중이 아닙니다.' },
+  NO_ROUTE:      { status: 404, message: '존재하지 않는 주소입니다.' },
   METHOD_NOT_ALLOWED: { status: 405, message: '허용되지 않는 요청 방식입니다.' },
 
   // 상태가 맞지 않음

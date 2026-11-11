@@ -1,35 +1,30 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { ApiError, toResponse } from '../../lib/errors';
+import { signAccess, signRefresh } from '../../lib/auth';
+import { safeEqual } from '../../lib/crypto';
+import { clearLimit, enforceLimit } from '../../lib/db';
+import { ApiError } from '../../lib/errors';
+import { handle } from '../../lib/http';
+import { STATION_ROLES, parseStation } from '../../lib/validate';
 
-type Method = 'GET' | 'POST';
-export type Ctx = { req: VercelRequest; body: Record<string, unknown>; ip: string };
+const PIN_STATIONS = new Set<string>(['suc2', 'shp1']);
 
-export function getIp(req: VercelRequest): string {
-  const xf = req.headers['x-forwarded-for'];
-  const first = (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0]?.trim();
-  const real = req.headers['x-real-ip'];
-  return first || (typeof real === 'string' ? real : '') || 'unknown';
-}
+export default handle(['POST'], async ({ body, ip }) => {
+  await enforceLimit(`code:${ip}`, 30, 300);
 
-/** 모든 API의 공통 틀: 방식 검사, 본문 읽기, 오류를 안전한 응답으로 */
-export function handle(methods: Method[], fn: (c: Ctx) => Promise<Record<string, unknown>>) {
-  return async (req: VercelRequest, res: VercelResponse) => {
-    res.setHeader('Cache-Control', 'no-store');
-    try {
-      if (!methods.includes(req.method as Method)) throw new ApiError('METHOD_NOT_ALLOWED');
-      let raw: unknown;
-      try {
-        raw = req.body;
-      } catch {
-        throw new ApiError('BAD_REQUEST'); // 깨진 JSON
-      }
-      const body =
-        raw && typeof raw === 'object' && !Array.isArray(raw) ? (raw as Record<string, unknown>) : {};
-      const out = await fn({ req, body, ip: getIp(req) });
-      res.status(200).json({ ok: true, ...out });
-    } catch (e) {
-      const r = toResponse(e);
-      res.status(r.status).json(r.body);
-    }
-  };
-}
+  const st = parseStation(body.code);
+  if (!st.ok) throw new ApiError('BAD_STATION');
+  const code = st.value;
+
+  if (PIN_STATIONS.has(code)) {
+    if (body.pin === undefined || body.pin === null) throw new ApiError('PIN_REQUIRED');
+    await enforceLimit(`pin:${ip}`, 5, 300);
+    const expected = process.env.STAFF_PIN;
+    if (!expected) throw new Error('STAFF_PIN missing');
+    const pin = typeof body.pin === 'string' ? body.pin : '';
+    if (!safeEqual(pin, expected)) throw new ApiError('WRONG_PIN');
+    await clearLimit(`pin:${ip}`);
+  }
+
+  const claims = { kind: 'staff' as const, station: code };
+  const [access, refresh] = await Promise.all([signAccess(claims), signRefresh(claims)]);
+  return { station: code, role: STATION_ROLES[code], access, refresh };
+});

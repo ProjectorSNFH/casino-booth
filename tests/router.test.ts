@@ -1,14 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { signAccess, signRefresh, verifyAccess } from '../lib/auth';
 
+
 const m = vi.hoisted(() => ({ enforceLimit: vi.fn(), clearLimit: vi.fn(), maybeSingle: vi.fn() }));
 vi.mock('../lib/db', () => ({
   enforceLimit: m.enforceLimit,
   clearLimit: m.clearLimit,
   db: () => ({ from: () => ({ select: () => ({ eq: () => ({ maybeSingle: m.maybeSingle }) }) }) }),
 }));
-
-import handler from '../api/[...path]';
+import handler from '../api/index';
 import { routeOf, routes } from '../lib/router';
 
 function mockRes() {

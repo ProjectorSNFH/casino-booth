@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
-   },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ProjectorSNFH/casino-booth.git"
@@ -26,7 +26,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
     "@upstash/redis": "^1.41.0",
-    "jose": "^6.2.15"
+    "jose": "^5.10.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

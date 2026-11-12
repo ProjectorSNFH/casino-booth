@@ -1,7 +1,7 @@
-import { signAccess, verifyRefresh } from '../../lib/auth';
-import { db } from '../../lib/db';
-import { ApiError } from '../../lib/errors';
-import { handle } from '../../lib/http';
+import { signAccess, verifyRefresh } from '../auth';
+import { db } from '../db';
+import { ApiError } from '../errors';
+import { handle } from '../http';
 
 export default handle(['POST'], async ({ body }) => {
   const token = typeof body.refresh === 'string' ? body.refresh : '';

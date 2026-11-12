@@ -1,9 +1,9 @@
-import { signAccess, signRefresh } from '../../lib/auth';
-import { safeEqual } from '../../lib/crypto';
-import { clearLimit, enforceLimit } from '../../lib/db';
-import { ApiError } from '../../lib/errors';
-import { handle } from '../../lib/http';
-import { STATION_ROLES, parseStation } from '../../lib/validate';
+import { signAccess, signRefresh } from '../auth';
+import { safeEqual } from '../crypto';
+import { clearLimit, enforceLimit } from '../db';
+import { ApiError } from '../errors';
+import { handle } from '../http';
+import { STATION_ROLES, parseStation } from '../validate';
 
 const PIN_STATIONS = new Set<string>(['suc2', 'shp1']);
 

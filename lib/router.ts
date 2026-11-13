@@ -1,9 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { ApiError, toResponse } from './errors';
 import authRefresh from './routes/auth-refresh';
+import entryClaim from './routes/entry-claim';
+import entryReconnect from './routes/entry-reconnect';
+import entryStatus from './routes/entry-status';
 import issueCancel from './routes/issue-cancel';
 import issueConfirm from './routes/issue-confirm';
 import issueCreate from './routes/issue-create';
+import issueReconnectConfirm from './routes/issue-reconnect-confirm';
+import issueReconnectReject from './routes/issue-reconnect-reject';
 import issueState from './routes/issue-state';
 import staffEnter from './routes/staff-enter';
 
@@ -17,6 +22,11 @@ export const routes: Record<string, Route> = {
   'issue/create': issueCreate,
   'issue/confirm': issueConfirm,
   'issue/cancel': issueCancel,
+  'issue/reconnect-confirm': issueReconnectConfirm,
+  'issue/reconnect-reject': issueReconnectReject,
+  'entry/claim': entryClaim,
+  'entry/status': entryStatus,
+  'entry/reconnect': entryReconnect,
 };
 
 /** /api/staff/enter?x=1 → staff/enter */

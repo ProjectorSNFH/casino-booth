@@ -5,14 +5,22 @@ import entryClaim from './routes/entry-claim';
 import entryReconnect from './routes/entry-reconnect';
 import entryStatus from './routes/entry-status';
 import gameAccept from './routes/game-accept';
+import gameAbort from './routes/game-abort';
+import gameBack from './routes/game-back';
+import gameEnd from './routes/game-end';
 import gameReject from './routes/game-reject';
+import gameResult from './routes/game-result';
 import gameScan from './routes/game-scan';
+import gameSettle from './routes/game-settle';
+import gameStart from './routes/game-start';
+import gameState from './routes/game-state';
 import issueCancel from './routes/issue-cancel';
 import issueConfirm from './routes/issue-confirm';
 import issueCreate from './routes/issue-create';
 import issueReconnectConfirm from './routes/issue-reconnect-confirm';
 import issueReconnectReject from './routes/issue-reconnect-reject';
 import issueState from './routes/issue-state';
+import meAck from './routes/me-ack';
 import meBet from './routes/me-bet';
 import meLeave from './routes/me-leave';
 import staffEnter from './routes/staff-enter';
@@ -35,6 +43,14 @@ export const routes: Record<string, Route> = {
   'game/scan': gameScan,
   'game/accept': gameAccept,
   'game/reject': gameReject,
+  'game/state': gameState,
+  'game/start': gameStart,
+  'game/end': gameEnd,
+  'game/result': gameResult,
+  'game/back': gameBack,
+  'game/settle': gameSettle,
+  'game/abort': gameAbort,
+  'me/ack': meAck,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

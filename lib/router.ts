@@ -1,6 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { ApiError, toResponse } from './errors';
 import authRefresh from './routes/auth-refresh';
+import issueCancel from './routes/issue-cancel';
+import issueConfirm from './routes/issue-confirm';
+import issueCreate from './routes/issue-create';
+import issueState from './routes/issue-state';
 import staffEnter from './routes/staff-enter';
 
 type Route = (req: VercelRequest, res: VercelResponse) => Promise<void>;
@@ -9,6 +13,10 @@ type Route = (req: VercelRequest, res: VercelResponse) => Promise<void>;
 export const routes: Record<string, Route> = {
   'staff/enter': staffEnter,
   'auth/refresh': authRefresh,
+  'issue/state': issueState,
+  'issue/create': issueCreate,
+  'issue/confirm': issueConfirm,
+  'issue/cancel': issueCancel,
 };
 
 /** /api/staff/enter?x=1 → staff/enter */

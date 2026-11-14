@@ -1,10 +1,16 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { ApiError, toResponse } from './errors';
+import adjustCard from './routes/adjust-card';
+import adjustGlistSet from './routes/adjust-glist-set';
+import adjustTlistAdd from './routes/adjust-tlist-add';
+import adjustTlistDelete from './routes/adjust-tlist-delete';
+import adjustTlistEdit from './routes/adjust-tlist-edit';
 import authRefresh from './routes/auth-refresh';
 import entryClaim from './routes/entry-claim';
 import entryReconnect from './routes/entry-reconnect';
 import entryStatus from './routes/entry-status';
 import gameAccept from './routes/game-accept';
+import eventSlot from './routes/event-slot';
 import gameAbort from './routes/game-abort';
 import gameBack from './routes/game-back';
 import gameEnd from './routes/game-end';
@@ -69,6 +75,12 @@ export const routes: Record<string, Route> = {
   'shop/stock': shopStock,
   'shop/queue': shopQueue,
   'shop/deliver': shopDeliver,
+  'adjust/card': adjustCard,
+  'adjust/tlist-add': adjustTlistAdd,
+  'adjust/tlist-edit': adjustTlistEdit,
+  'adjust/tlist-delete': adjustTlistDelete,
+  'adjust/glist-set': adjustGlistSet,
+  'event/slot': eventSlot,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

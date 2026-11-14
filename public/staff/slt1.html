@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 슬롯 이벤트 (slt1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#07080b;--p:rgba(22,24,32,.86);--ln:rgba(255,255,255,.12);--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:14px Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh}
+#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh}
+button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
+.tb{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--ln);background:var(--p);backdrop-filter:blur(8px)}.logo{font:17px Monoton,cursive;color:var(--amb)}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--ln);background:var(--p);font-weight:600}.btn.g{background:var(--amb);color:#111;border-color:var(--amb)}.btn.r{border-color:#6a2c33;color:var(--red);background:none}.btn.w{background:none;border-color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}.big{width:100%;padding:18px;font-size:17px}
+.in{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--ln);background:rgba(0,0,0,.35);color:#fff;font:14px Inter}.in:focus{outline:0;border-color:var(--amb)}
+.cd{background:var(--p);border:1px solid var(--ln);border-radius:16px;backdrop-filter:blur(8px)}.c{padding:20px}.mu{color:var(--mut);font-size:12px}.bn{font:700 44px 'Space Grotesk';color:var(--amb)}.er2{color:var(--red);font-size:12.5px;margin:8px 0;min-height:16px}
+.sp{position:relative;width:40px;height:40px;margin:30px auto}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 32px/1 'Space Grotesk';font-style:normal;opacity:0;animation:su 2s infinite}.sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}
+@keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
+#er{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);align-items:center;justify-content:center;text-align:center;padding:24px}#er.on{display:flex}#er h1{font-size:20px;margin:10px 0 6px}#er p{color:var(--mut);margin:0 0 20px}
+.tt{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
+.tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--ln)}.tag.a{color:var(--grn);border-color:#2c5a45}.tag.p{color:var(--amb);border-color:#5a4718}.tag.b{color:var(--red);border-color:#6a2c33}.tag.d{color:#7a828a}
+.hv .btn:hover{transform:translateY(-1px);filter:brightness(1.18)}.hv tbody tr:hover{background:#ffffff08}.btn{transition:.15s}
+.dg{display:flex;justify-content:center;gap:10px;margin:14px 0 4px}.db{width:62px;height:76px;border-radius:12px;border:1px solid var(--ln);background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font:700 38px 'Space Grotesk'}.db.on{border-color:var(--amb)}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.k{padding:16px 0;font:600 24px 'Space Grotesk';border-radius:12px;border:1px solid var(--ln);background:var(--p)}.k.s{font-size:15px;color:var(--mut)}.k:disabled{opacity:.4}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rb{padding:22px 0;font:700 30px 'Space Grotesk';border-radius:14px;border:1px solid var(--amb);background:var(--p);color:var(--amb)}.rb small{display:block;font:500 12px Inter;color:var(--mut);margin-top:2px}.rb.z{border-color:var(--ln);color:#e8ebf0}.rb:disabled{opacity:.4}
+.lg{display:flex;justify-content:space-between;padding:9px 4px;border-top:1px solid var(--ln);font-size:14px}.lg b{font-family:'Space Grotesk';color:var(--amb)}
+#cf{display:none;position:fixed;inset:0;z-index:25;background:#000b;align-items:center;justify-content:center;padding:24px}#cf.on{display:flex}
+</style></head><body class=""><canvas id="bg"></canvas><div class="tt" id="tt"></div>
+<div id="er"><div><div style="font-size:34px">🌐</div><h1>오류가 발생했습니다</h1><p>연결 지연 또는 연결하는 중에 오류가 발생하였습니다.</p><button class="btn g" onclick="location.reload()">↻ 새로고침</button></div></div>
+<div class="wr"><div class="tb"><span class="logo">CASINO</span><b>슬롯 이벤트 · slt1</b></div><div id="m" style="max-width:420px;margin:0 auto;padding:22px 16px"></div></div><div id="cf"><div class="cd c" id="cfb" style="width:min(340px,100%);text-align:center"></div></div><script src="/js/casino-api.js"></script><script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+(()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
+addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
+const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=(m,ms)=>{const t=$('#tt');t.textContent=m;t.style.display='block';clearTimeout(window._tt);window._tt=setTimeout(()=>t.style.display='none',ms||2400)};
+const SESS=(code)=>{const s=CasinoAPI.staffSession();return !s||s.station!==code};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(3,'0');
+const hhmm=t=>{try{return new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){return ''}};
+const msg=e=>(e.message||'처리할 수 없어요')+(e.detail?` (${typeof e.detail==='string'?e.detail:JSON.stringify(e.detail)})`:'');
+const ST=CasinoAPI.staff,bad=SESS('slt1');
+if(bad)location.replace('/staff/');CasinoAPI.onSessionLost(()=>location.replace('/staff/'));
+/* 서버 config.events.SLOTMACHINE.rewards 와 같아야 함. 다르면 서버가 BAD_REWARD로 거절 */
+const RW=[0,2,4,6,9,12];
+let dg=[],stage='num',res=null,busy=0,pend=null,err='',LOG=[];
+try{LOG=JSON.parse(sessionStorage.getItem('slt1.log')||'[]')}catch(e){LOG=[]}
+const saveLog=()=>{try{sessionStorage.setItem('slt1.log',JSON.stringify(LOG.slice(0,8)))}catch(e){}};
+const num=()=>Number(dg.join(''));
+const rw=v=>v>0?'+'+v:'꽝';
+function R(){const m=$('#m');
+ if(stage==='num'){m.innerHTML=`<div class="mu" style="text-align:center">참여자의 식별번호 3자리를 누르세요</div><div class="dg">${[0,1,2].map(i=>`<div class="db${i===dg.length?' on':''}">${dg[i]===undefined?'':dg[i]}</div>`).join('')}</div><div class="er2" style="text-align:center">${esc(err)}</div>
+ <div class="kp">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="k rp" onclick="key(${n})">${n}</button>`).join('')}<button class="k s rp" onclick="clr()">지우기</button><button class="k rp" onclick="key(0)">0</button><button class="k rp" onclick="del()">⌫</button></div>
+ <button class="btn g big rp" onclick="nextStep()" ${dg.length===3?'':'disabled'}>다음</button>
+ ${LOG.length?`<div class="mu" style="margin:20px 0 6px">최근 기록 (이 기기)</div>${LOG.slice(0,5).map(l=>`<div class="lg"><span>${pad(l.id)}번</span><b>${rw(l.reward)}</b><span class="mu">잔고 ${l.balance}</span></div>`).join('')}`:''}`;return}
+ if(stage==='pick'){m.innerHTML=`<div class="cd c" style="text-align:center"><div class="mu">식별번호</div><div class="bn" style="font-size:64px">${pad(num())}</div><button class="btn rp" onclick="backNum()" ${busy?'disabled':''}>번호 바꾸기</button></div><div class="mu" style="margin:16px 0 8px;text-align:center">슬롯 결과를 고르세요</div><div class="rg">${RW.map(v=>`<button class="rb rp${v?'':' z'}" onclick="pick(${v})" ${busy?'disabled':''}>${rw(v)}<small>${v?'코인':'0코인'}</small></button>`).join('')}</div>`;return}
+ if(stage==='done'){m.innerHTML=`<div class="cd c" style="text-align:center;margin-bottom:16px"><div style="font-size:40px">${res.reward>0?'🎉':'😅'}</div><div class="mu">${pad(res.id)}번</div><div class="bn" style="font-size:56px">${rw(res.reward)}</div><div class="mu" style="margin-top:6px">현재 잔고 ${res.balance}코인</div>${res.already?'<div class="tag p" style="margin-top:12px">이미 기록된 같은 결과예요</div>':'<div class="tag a" style="margin-top:12px">기록 완료</div>'}</div><button class="btn g big rp" onclick="nxt()">다음 사람</button>`;return}
+ m.innerHTML=`<div class="cd c" style="text-align:center;margin-bottom:16px"><div style="font-size:40px">🚫</div><h2>이미 참여한 카드예요</h2><p class="mu">${pad(res.id)}번은 슬롯을 이미 했어요.<br>결과는 바꿀 수 없어요.</p></div><button class="btn g big rp" onclick="nxt()">다음 사람</button>`}
+function key(n){if(stage!=='num'||dg.length>=3)return;dg.push(String(n));err='';R()}
+function del(){if(stage!=='num')return;dg.pop();err='';R()}
+function clr(){if(stage!=='num')return;dg=[];err='';R()}
+function nextStep(){if(stage!=='num'||dg.length<3)return;if(num()<1){err='001부터 999까지예요';dg=[];R();return}stage='pick';R()}
+function backNum(){if(busy)return;stage='num';dg=[];R()}
+function nxt(){stage='num';dg=[];res=null;err='';R()}
+function pick(v){if(busy||stage!=='pick')return;pend=v;$('#cfb').innerHTML=`<div class="mu">식별번호</div><div class="bn" style="font-size:48px">${pad(num())}</div><div style="font-size:22px;font-weight:700;margin:8px 0">${v>0?'+'+v+'코인':'꽝 (0코인)'}</div><p class="mu">기록하면 바꿀 수 없어요.</p><div style="display:flex;gap:8px"><button class="btn rp" style="flex:1" onclick="cfNo()">취소</button><button class="btn g rp" style="flex:1" onclick="cfOk()">기록</button></div>`;$('#cf').classList.add('on')}
+const cfNo=()=>{pend=null;$('#cf').classList.remove('on')};
+function cfOk(){if(busy||pend===null)return;const v=pend,id=num();cfNo();busy++;R();
+ ST.eventSlot({card_id:id,reward:v}).then(r=>{res={id:r.card_id,reward:r.reward,balance:r.balance,already:!!r.already};if(!r.already){LOG.unshift({id:r.card_id,reward:r.reward,balance:r.balance});saveLog()}stage='done'})
+ .catch(e=>{console.error(e);const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}
+  if(k==='ALREADY_PLAYED'){res={id};stage='dup';return}
+  if(k==='NOT_FOUND'||k==='NOT_ACTIVE'||k==='BAD_CARD_ID'){stage='num';dg=[];err=msg(e);return}
+  if(e&&e.status>=400&&e.status<500){toast(msg(e));return}
+  toast('연결이 불안해요. 같은 결과를 다시 눌러 확인하세요 (중복 기록되지 않아요)',4500)})
+ .finally(()=>{busy--;R()})}
+addEventListener('keydown',e=>{if(stage!=='num'||busy||$('#cf').classList.contains('on'))return;if(/^[0-9]$/.test(e.key))key(e.key);else if(e.key==='Backspace')del();else if(e.key==='Enter')nextStep()});
+if(!bad)R();
+</script></body></html>

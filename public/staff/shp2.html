@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
 :root{--bg:#07080b;--p:rgba(22,24,32,.86);--ln:rgba(255,255,255,.12);--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
 *{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:14px Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh}
-#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh;padding-top:34px}
+#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh}
 button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
 .tb{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--ln);background:var(--p);backdrop-filter:blur(8px)}.logo{font:17px Monoton,cursive;color:var(--amb)}
 .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--ln);background:var(--p);font-weight:600}.btn.g{background:var(--amb);color:#111;border-color:var(--amb)}.btn.r{border-color:#6a2c33;color:var(--red);background:none}.btn.w{background:none;border-color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}.big{width:100%;padding:18px;font-size:17px}
@@ -11,27 +11,31 @@ button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:
 .sp{position:relative;width:40px;height:40px;margin:30px auto}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 32px/1 'Space Grotesk';font-style:normal;opacity:0;animation:su 2s infinite}.sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}
 @keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
 #er{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);align-items:center;justify-content:center;text-align:center;padding:24px}#er.on{display:flex}#er h1{font-size:20px;margin:10px 0 6px}#er p{color:var(--mut);margin:0 0 20px}
-.tt{position:fixed;top:48px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
-#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:6px}#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}
+.tt{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
 .tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--ln)}.tag.a{color:var(--grn);border-color:#2c5a45}.tag.p{color:var(--amb);border-color:#5a4718}.tag.b{color:var(--red);border-color:#6a2c33}.tag.d{color:#7a828a}
 .hv .btn:hover{transform:translateY(-1px);filter:brightness(1.18)}.hv tbody tr:hover{background:#ffffff08}.btn{transition:.15s}
-</style></head><body class=""><canvas id="bg"></canvas><div id="dv"></div><div class="tt" id="tt"></div>
+</style></head><body class=""><canvas id="bg"></canvas><div class="tt" id="tt"></div>
 <div id="er"><div><div style="font-size:34px">🌐</div><h1>오류가 발생했습니다</h1><p>연결 지연 또는 연결하는 중에 오류가 발생하였습니다.</p><button class="btn g" onclick="location.reload()">↻ 새로고침</button></div></div>
-<div class="wr"><div class="tb"><span class="logo">CASINO</span><b>상품 배부 · shp2</b></div><div id="m" style="max-width:420px;margin:0 auto;padding:22px 16px"></div></div><script>
+<div class="wr"><div class="tb"><span class="logo">CASINO</span><b>상품 배부 · shp2</b></div><div id="m" style="max-width:420px;margin:0 auto;padding:22px 16px"></div></div><script src="/js/casino-api.js"></script><script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
 addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
 const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2400)};
-window.FAIL=false;const lat=()=>new Promise((r,j)=>setTimeout(()=>window.FAIL?j(1):r(),300)),run=async f=>{try{await f()}catch(e){$('#er').classList.add('on')}};
-const rn=()=>Array.from(crypto.getRandomValues(new Uint8Array(5)),b=>'abcdefghijklmnopqrstuvwxyz'[b%26]).join('');
-function dev(o){for(const k in o){const b=document.createElement('button');b.textContent=k;b.className='rp';b.onclick=o[k];$('#dv').appendChild(b)}}
-
-let Q=null;const seed=[{id:211,items:{'마이쥬':1,'초코파이':2}},{id:301,items:{'쌀과자':1}}];
-/* 서버 어댑터: Realtime으로 승인된 주문 목록 구독 + 배부 완료 POST */
-const API={async list(){await lat();return JSON.parse(localStorage.getItem('sh2')||'null')||seed},async save(q){localStorage.setItem('sh2',JSON.stringify(q))},async done(){await lat()}};
-function R(){const m=$('#m');if(!Q){m.innerHTML=SUIT;return}if(!Q.length){m.innerHTML=`<div class="cd c" style="text-align:center"><div style="font-size:34px">📦</div><h2>대기 중인 배부가 없습니다</h2><p class="mu">승인된 주문이 들어오면 자동으로 표시됩니다.</p></div>`;return}
- const o=Q[0],n=Object.values(o.items).reduce((a,b)=>a+b,0);m.innerHTML=`<div class="mu" style="margin-bottom:8px">배부 대기 ${Q.length}명</div><div class="cd c" style="text-align:center;margin-bottom:16px"><div class="mu">식별번호</div><div class="bn" style="font-size:64px">${o.id}</div><div style="margin-top:10px">${Object.entries(o.items).map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:12px 4px;border-top:1px solid var(--ln);font-size:17px"><span>${k}</span><b>×${v}</b></div>`).join('')}</div><div class="mu" style="margin-top:8px">총 ${n}개</div></div><button class="btn g big rp" onclick="done()">배부 완료</button>`}
-const done=()=>run(async()=>{await API.done(Q[0].id);Q.shift();await API.save(Q);R();toast('배부 완료')});
-run(async()=>{Q=await API.list();R()});R();
-dev({'새 주문 승인':()=>{Q=Q||[];Q.push({id:[322,145,188][Q.length%3],items:{'마카로니':1,'젤리스트로우':1}});R()},'비어있음':()=>{Q=[];R()},'로딩':()=>{Q=null;R()},'오류':()=>$('#er').classList.add('on')});
+const SESS=(code)=>{const s=CasinoAPI.staffSession();return !s||s.station!==code};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(3,'0');
+const hhmm=t=>{try{return new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){return ''}};
+const msg=e=>(e.message||'처리할 수 없어요')+(e.detail?` (${typeof e.detail==='string'?e.detail:JSON.stringify(e.detail)})`:'');
+const ST=CasinoAPI.staff,bad=SESS('shp2');
+if(bad)location.replace('/staff/');CasinoAPI.onSessionLost(()=>location.replace('/staff/'));
+let Q=null,busy=0,fails=0,sq=0,sig='';
+async function run(f){busy++;try{await f()}catch(e){fail(e)}finally{busy--}}
+function fail(e){console.error(e);const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}if(e&&e.status>=400&&e.status<500){toast(msg(e));sync().catch(()=>{});return}$('#er').classList.add('on')}
+async function sync(){const my=++sq,r=await ST.shopQueue();if(my!==sq)return;Q=r.orders;fails=0;if(JSON.stringify(Q)!==sig)R()}
+function R(){const m=$('#m');if(!Q){m.innerHTML=SUIT;return}sig=JSON.stringify(Q);if(!Q.length){m.innerHTML=`<div class="cd c" style="text-align:center"><div style="font-size:34px">📦</div><h2>대기 중인 배부가 없습니다</h2><p class="mu">승인된 주문이 들어오면 자동으로 표시됩니다.</p></div>`;return}
+ const o=Q[0],n=o.items.reduce((a,b)=>a+b.qty,0);m.innerHTML=`<div class="mu" style="margin-bottom:8px">배부 대기 ${Q.length}명</div><div class="cd c" style="text-align:center;margin-bottom:16px"><div class="mu">식별번호</div><div class="bn" style="font-size:64px">${pad(o.card_id)}</div><div style="margin-top:10px">${o.items.map(it=>`<div style="display:flex;justify-content:space-between;padding:12px 4px;border-top:1px solid var(--ln);font-size:17px"><span>${esc(it.name)}</span><b>×${it.qty}</b></div>`).join('')}</div><div class="mu" style="margin-top:8px">총 ${n}개</div></div><button class="btn g big rp" onclick="done(${o.id})">배부 완료</button>`}
+const done=id=>{if(busy)return;run(async()=>{if(!Q||!Q[0]||Q[0].id!==id){toast('목록이 바뀌었어요. 다시 확인해주세요');await sync();return}await ST.shopDeliver({order_id:id});await sync();toast('배부 완료')})};
+const poll=async()=>{if(document.hidden||busy||bad)return;try{await sync()}catch(e){const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}if(++fails>=3)$('#er').classList.add('on')}};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
+(async()=>{if(bad)return;R();try{await sync()}catch(e){fail(e)}setInterval(poll,2000)})();
 </script></body></html>

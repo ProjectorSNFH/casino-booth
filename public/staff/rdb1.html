@@ -38,7 +38,7 @@ button{font:inherit;cursor:pointer}.rp{position:relative;overflow:hidden}.rip{po
 const CFG={"code": "rdb1", "name": "랜덤 공", "key": "RANDOMBALL", "max": 1, "layout": [[0]], "mult": 0, "half": 0, "nobet": 1, "plays": 5};const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
 addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
-const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)};
+const pad=n=>String(n).padStart(3,'0'),SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)};
 $('#ht').textContent=CFG.name+' 0'+CFG.code.slice(-1);
 /* ===== 서버 연결: 화면 상태는 서버가 기준이고 2초마다 game/state로 맞춘다 ===== */
 const ST=CasinoAPI.staff,STG={scanned:'wait',bet_set:'check',ready:'ready'},ses=CasinoAPI.staffSession(),bad=!ses||ses.station!==CFG.code;
@@ -61,10 +61,10 @@ function slotEl(i){const s=S.slots[i],e=document.createElement('div');e.classNam
  if(!s){e.innerHTML=P==='prep'?`<div class="t"><span class="mu">대기 슬롯</span></div><div class="b"><button class="cam rp" onclick="openScan(${i})">📷</button></div>`:`<div class="t"><span class="mu">미참여</span></div><div class="b"><span class="lb" style="color:#555">-</span></div>`;return e}
  if(s.stage==='scanning'){e.innerHTML=`<div class="t">${SUIT}<span class="mu">인식 중…</span></div><div class="b"></div>`;return e}
  if(s.stage==='denied'){e.classList.add('den');e.innerHTML=`<div class="t"><b style="color:var(--red);font-size:14px">${s.why==='PLAY_LIMIT'?'참여 횟수 초과':s.why==='LOW_COINS'?'코인 부족':'참여할 수 없어요'}</b><span class="mu">${s.msg||''}</span></div><div class="b"><button class="x rp" style="border:0!important" onclick="clr(${i})">✕ 닫기</button></div>`;return e}
- if(s.stage==='wait'){e.innerHTML=`<div class="t"><div class="id">No.${s.id}</div>${SUIT}<span class="mu">${CFG.nobet?'참여 확인 중…':'베팅 설정 중…'}</span></div><div class="b"></div>`;return e}
+ if(s.stage==='wait'){e.innerHTML=`<div class="t"><div class="id">No.${pad(s.id)}</div>${SUIT}<span class="mu">${CFG.nobet?'참여 확인 중…':'베팅 설정 중…'}</span></div><div class="b"></div>`;return e}
  const bet=CFG.nobet?'<span class="mu">무베팅</span>':`<span class="mu">베팅</span><div class="bt">${s.bet}</div>`;
- if(s.stage==='check'){e.innerHTML=`<div class="t"><div class="id">No.${s.id}</div>${bet}</div><div class="b"><button class="x rp" onclick="rej(${i})">✕</button><button class="v rp" onclick="acc(${i})">✓</button></div>`;return e}
- let top=`<div class="id">No.${s.id}</div>${bet}`,bot;
+ if(s.stage==='check'){e.innerHTML=`<div class="t"><div class="id">No.${pad(s.id)}</div>${bet}</div><div class="b"><button class="x rp" onclick="rej(${i})">✕</button><button class="v rp" onclick="acc(${i})">✓</button></div>`;return e}
+ let top=`<div class="id">No.${pad(s.id)}</div>${bet}`,bot;
  if(P==='pick'&&S.vs==='staff')top+=`<div class="pk"><button class="w rp ${S.win==='W'?'on':''}" onclick="S.win='W';R()">승리</button><button class="l rp ${S.win==='L'?'on':''}" onclick="S.win='L';R()">패배</button></div>`;
  if(P==='review'){const d=dOf(i);top+=`<div class="dl ${d>0?'p':d<0?'n':''}">${d>0?'+':''}${d}</div>`;bot=`<span class="lb">${s.acked?'✓ 참여자 확인':'참여자 확인 대기'}</span>`}
  else bot=`<span class="lb">${P==='prep'?'✓ 준비 완료':P==='playing'?'진행 중':P==='pick'?(S.vs==='friends'?(S.win===i?'승자 선택됨':'탭하여 승자 선택'):'결과 선택'):''}</span>`;

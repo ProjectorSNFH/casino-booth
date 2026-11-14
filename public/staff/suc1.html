@@ -40,6 +40,7 @@ if(bad)location.replace('/staff/');
 CasinoAPI.onSessionLost(()=>location.replace('/staff/'));
 const GN={HALLIGALLI:'할리갈리',SKEWER:'꼬치의 달인',CHAMCHAMCHAM:'참참참',JOKER:'조커 뽑기',RANDOMBALL:'랜덤 공',TABLESOCCER:'테이블 축구',SLOTMACHINE:'슬롯 머신'};
 let C=null,P=null,rv={},rvT={},rqN={},busy=0,fails=0,sq1=0,sq2=0,mAct=null,comp=0,lastRows='',lastRq='';
+const pad=n=>String(n).padStart(3,'0');
 const mask=n=>n.length<3?n[0]+'*':n[0]+'*'.repeat(n.length-2)+n.slice(-1);
 const hhmm=t=>{try{return new Date(t).toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){return ''}};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -56,14 +57,14 @@ function R(){const t=$('#rows');if(!P||!C){t.innerHTML=`<tr><td colspan=7>${SUIT
  const sel=$('#pt');[...sel.options].forEach(o=>o.disabled=PS(+o.value)==='ended');if(sel.selectedOptions[0]&&sel.selectedOptions[0].disabled){const f=[...sel.options].find(o=>!o.disabled);if(f)sel.value=f.value}
  const p=+sel.value;$('#capl').innerHTML=`발급 ${issued[p]||0} / ${cap(p)}명 · 현재 활성 <b style="color:${act>=AC()?'var(--red)':'var(--ink)'}">${act} / ${AC()}</b>명`;$('#stat').textContent='활성 '+act+' / '+AC();
  const rq=P.reconnects||[];$('#rqn').textContent=rq.length?`(${rq.length})`:'';
- const rh=rq.length?rq.map(r=>`<div class="rq"><span><b class="idn">No.${r.card_id}</b> <span class="sn">${esc(r.session_name)}</span>${rqN[r.claim_id]?` <b style="margin-left:6px">${esc(rqN[r.claim_id])}</b>`:''}</span><span><button class="btn rp" onclick="rqNm(${r.claim_id},${r.card_id})">이름</button> <button class="btn rp" onclick="rqNo(${r.claim_id})">거절</button> <button class="btn g rp" onclick="rqOk(${r.claim_id})">확인</button></span></div>`).join(''):'<div class="mu">대기 중인 재연결 요청이 없습니다</div>';
+ const rh=rq.length?rq.map(r=>`<div class="rq"><span><b class="idn">No.${pad(r.card_id)}</b> <span class="sn">${esc(r.session_name)}</span>${rqN[r.claim_id]?` <b style="margin-left:6px">${esc(rqN[r.claim_id])}</b>`:''}</span><span><button class="btn rp" onclick="rqNm(${r.claim_id},${r.card_id})">이름</button> <button class="btn rp" onclick="rqNo(${r.claim_id})">거절</button> <button class="btn g rp" onclick="rqOk(${r.claim_id})">확인</button></span></div>`).join(''):'<div class="mu">대기 중인 재연결 요청이 없습니다</div>';
  if(rh!==lastRq){lastRq=rh;$('#rqs').innerHTML=rh}
  const q=$('#sq').value.trim(),tier=s=>s==='banned'?2:s==='done'?1:0,L={active:'활성',pending:'대기',done:'퇴장',banned:'제한'},K={active:'a',pending:'p',done:'d',banned:'b'};
- const html=[...C].filter(c=>!q||String(c.id).includes(q)||(c.name||'').includes(q)||(rv[c.id]||'').includes(q)).sort((a,b)=>tier(a.status)-tier(b.status)||a.id-b.id).map(c=>`<tr><td class="idn">No.${c.id}</td><td>${rv[c.id]?esc(rv[c.id]):esc(c.name)}<button class="rv" onclick="rvTog(${c.id})">${rv[c.id]?'숨기기':'보기'}</button></td><td><span class="tag ${K[c.status]||'d'}">${L[c.status]||c.status}</span></td><td>${GN[c.game]||c.game||'-'}</td><td class="cn ${c.coins===0&&c.status==='active'?'z':''}">${c.coins}</td><td>${hhmm(c.at)}</td><td>${c.status==='active'?`<button class="btn rp" onclick="exitC(${c.id})">퇴장</button> <button class="btn r rp" onclick="banC(${c.id})">이용 제한</button>`:''}</td></tr>`).join('');
+ const html=[...C].filter(c=>!q||String(c.id).includes(q)||(c.name||'').includes(q)||(rv[c.id]||'').includes(q)).sort((a,b)=>tier(a.status)-tier(b.status)||a.id-b.id).map(c=>`<tr><td class="idn">No.${pad(c.id)}</td><td>${rv[c.id]?esc(rv[c.id]):esc(c.name)}<button class="rv" onclick="rvTog(${c.id})">${rv[c.id]?'숨기기':'보기'}</button></td><td><span class="tag ${K[c.status]||'d'}">${L[c.status]||c.status}</span></td><td>${GN[c.game]||c.game||'-'}</td><td class="cn ${c.coins===0&&c.status==='active'?'z':''}">${c.coins}</td><td>${hhmm(c.at)}</td><td>${c.status==='active'?`<button class="btn rp" onclick="exitC(${c.id})">퇴장</button> <button class="btn r rp" onclick="banC(${c.id})">이용 제한</button>`:''}</td></tr>`).join('');
  if(html!==lastRows){lastRows=html;t.innerHTML=html}
  const pd=P.pending,cur=pd?pd.card_id:null,sess=pd&&pd.claim&&!pd.claim.expired?pd.claim.session_name:null,exp=!!(pd&&pd.claim&&pd.claim.expired);
  $('#is').classList.toggle('on',!!cur);$('#mb').textContent=cur?'확인':'발급';$('#mb').disabled=!!cur&&!sess;$('#mb').onclick=cur?confirmIssue:issue;$('#cb').style.display=cur?'block':'none';
- if(cur){$('#isn').textContent='No.'+cur;$('#iss').textContent=exp?'시간 초과':sess||'대기 중…';$('#iss').className='sn'+(sess?'':' w');if(exp)$('#er2').textContent='참여자 입력 시간이 지났어요. 발급 취소 후 다시 발급해주세요.'}}
+ if(cur){$('#isn').textContent='No.'+pad(cur);$('#iss').textContent=exp?'시간 초과':sess||'대기 중…';$('#iss').className='sn'+(sess?'':' w');if(exp)$('#er2').textContent='참여자 입력 시간이 지났어요. 발급 취소 후 다시 발급해주세요.'}}
 const ask=(t,p,label,fn)=>{$('#mt').textContent=t;$('#mp').textContent=p;$('#mo').textContent=label;mAct=fn;$('#md').classList.add('on')};
 const mdc=()=>{mAct=null;$('#md').classList.remove('on')},mok=()=>{const f=mAct;mdc();if(f)f()};
 const setP=(p,v)=>{if(!P||PS(p)===v)return;const go=()=>run(async()=>{const r=await ST.issuePart({part:p,status:v});await syncAll();toast(v==='ended'?`${p}부 종료 · 퇴장 ${r.exited}장`+(r.deferred?` · 진행 중이라 보류 ${r.deferred}장`:''):`${p}부를 시작했습니다`)});
@@ -74,8 +75,8 @@ const issue=()=>run(async()=>{const p=+$('#pt').value,s=$('#sid').value.trim(),n
  $('#sid').value='';$('#nm').value='';await syncAll()});
 const confirmIssue=()=>run(async()=>{const id=P.pending&&P.pending.card_id;if(!id)return;await ST.issueConfirm({card_id:id});$('#er2').textContent='';await syncAll();toast('발급 완료 · WELCOME +'+(lim().welcome_coins??'')+' 기록')});
 const cancelIssue=()=>run(async()=>{const id=P.pending&&P.pending.card_id;if(!id)return;await ST.issueCancel({card_id:id});$('#er2').textContent='';await syncAll()});
-const exitC=id=>ask(`No.${id} 카드를 퇴장 처리할까요?`,'퇴장하면 재참여할 수 없고 되돌릴 수 없어요.','퇴장',()=>run(async()=>{await ST.issueExit({card_id:id});await syncAll();toast(`No.${id} 퇴장 처리됨`)}));
-const banC=id=>ask('이 카드를 이용 제한할까요?','제한하면 참여자 화면이 즉시 차단 화면으로 바뀌고 되돌릴 수 없습니다.','이용 제한',()=>run(async()=>{await ST.issueBan({card_id:id});await syncAll();toast(`No.${id} 이용 제한됨`)}));
+const exitC=id=>ask(`No.${pad(id)} 카드를 퇴장 처리할까요?`,'퇴장하면 재참여할 수 없고 되돌릴 수 없어요.','퇴장',()=>run(async()=>{await ST.issueExit({card_id:id});await syncAll();toast(`No.${pad(id)} 퇴장 처리됨`)}));
+const banC=id=>ask('이 카드를 이용 제한할까요?','제한하면 참여자 화면이 즉시 차단 화면으로 바뀌고 되돌릴 수 없습니다.','이용 제한',()=>run(async()=>{await ST.issueBan({card_id:id});await syncAll();toast(`No.${pad(id)} 이용 제한됨`)}));
 const reveal=async id=>(await ST.issueReveal({card_id:id})).name;
 const rvTog=id=>{if(rv[id]){delete rv[id];lastRows='';R();return}run(async()=>{rv[id]=await reveal(id);lastRows='';R();clearTimeout(rvT[id]);rvT[id]=setTimeout(()=>{delete rv[id];lastRows='';R()},15000)})};
 const rqNm=(cl,id)=>run(async()=>{rqN[cl]=await reveal(id);lastRq='';R();setTimeout(()=>{delete rqN[cl];lastRq='';R()},15000)});

@@ -22,6 +22,11 @@ import gameStart from './routes/game-start';
 import gameState from './routes/game-state';
 import hofList from './routes/hof-list';
 import hofWinnerPii from './routes/hof-winner-pii';
+import issueBan from './routes/issue-ban';
+import issueCards from './routes/issue-cards';
+import issueExit from './routes/issue-exit';
+import issuePart from './routes/issue-part';
+import issueReveal from './routes/issue-reveal';
 import issueCancel from './routes/issue-cancel';
 import issueConfirm from './routes/issue-confirm';
 import issueCreate from './routes/issue-create';
@@ -85,6 +90,11 @@ export const routes: Record<string, Route> = {
   'event/slot': eventSlot,
   'hof/list': hofList,
   'hof/winner-pii': hofWinnerPii,
+  'issue/cards': issueCards,
+  'issue/part': issuePart,
+  'issue/exit': issueExit,
+  'issue/ban': issueBan,
+  'issue/reveal': issueReveal,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

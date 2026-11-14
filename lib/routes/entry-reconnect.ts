@@ -29,5 +29,7 @@ export default handle(['POST'], async ({ body, ip }) => {
   try { stored = decrypt(data.name_enc); } catch { throw new ApiError('INTERNAL'); }
   if (!safeEqual(stored.normalize('NFC'), name)) throw new ApiError('INFO_MISMATCH');
 
-  return await openClaim('request_reconnect', data.id, session);
+  // 학번+이름이 맞은 사람에게만 번호를 알려줌 (화면에 "기존 식별번호"로 보여주기 위함)
+  const claim = await openClaim('request_reconnect', data.id, session);
+  return { ...claim, card_id: data.id as number };
 });

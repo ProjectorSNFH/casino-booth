@@ -184,6 +184,7 @@ describe('entry/reconnect', () => {
     const res = await call('/api/entry/reconnect', { body: good });
     expect(res.statusCode).toBe(200);
     expect(res.body.claim_id).toBe(31);
+    expect(res.body.card_id).toBe(9);
     const [fn, args] = m.rpc.mock.calls[0];
     expect(fn).toBe('request_reconnect');
     expect(args.p_card_id).toBe(9);

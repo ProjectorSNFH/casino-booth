@@ -129,7 +129,7 @@
       },
       reconnect: function (sid, name, sessionName) {
         return pub('POST', 'entry/reconnect', { sid: sid, name: name, session_name: sessionName }).then(function (r) {
-          return { claim_id: r.claim_id, secret: r.secret, session_name: r.session_name };
+          return { claim_id: r.claim_id, secret: r.secret, session_name: r.session_name, card_id: r.card_id };
         });
       },
       /* 상태 확인. 확정되면 토큰을 저장하고 {status:'confirmed', card_id}를 돌려준다 */
@@ -184,7 +184,7 @@
       eventSlot: S('POST', 'event/slot'), hofList: S('GET', 'hof/list'), hofPii: S('POST', 'hof/winner-pii'),
     };
     api.me = {
-      bet: M('POST', 'me/bet'), leave: M('POST', 'me/leave'), ack: M('POST', 'me/ack'),
+      state: M('GET', 'me/state'), bet: M('POST', 'me/bet'), leave: M('POST', 'me/leave'), ack: M('POST', 'me/ack'),
       products: M('GET', 'shop/products'), order: M('POST', 'shop/order'), cancelOrder: M('POST', 'shop/cancel'),
     };
     return api;

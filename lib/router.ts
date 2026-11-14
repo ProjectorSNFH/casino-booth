@@ -11,6 +11,7 @@ import entryReconnect from './routes/entry-reconnect';
 import entryStatus from './routes/entry-status';
 import gameAccept from './routes/game-accept';
 import eventSlot from './routes/event-slot';
+import meState from './routes/me-state';
 import gameAbort from './routes/game-abort';
 import gameBack from './routes/game-back';
 import gameEnd from './routes/game-end';
@@ -95,6 +96,7 @@ export const routes: Record<string, Route> = {
   'issue/exit': issueExit,
   'issue/ban': issueBan,
   'issue/reveal': issueReveal,
+  'me/state': meState,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

@@ -26,9 +26,8 @@ button{font:inherit;cursor:pointer}
 .kp{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:auto}
 .k{background:none;border:0;color:var(--ink);font:500 24px 'Space Grotesk';height:58px;border-radius:29px}
 .coin{width:34px;height:34px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff2b8,#f0a83a 65%,#b9741a);box-shadow:0 0 14px #f0a83a88;animation:sc 2.4s linear infinite}@keyframes sc{50%{transform:scaleX(.15)}}
-#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:7px}
-#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}#dv .on{background:var(--amb);color:#111}
-</style></head><body><canvas id="bg"></canvas><div id="dv"></div><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div><script>
+</style></head><body><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div><script src="/js/casino-api.js"></script>
+<script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);
 const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.07+.5*k})`;x.beginPath();x.arc(u,y,1+1.3*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
@@ -43,6 +42,19 @@ mk('banned','⛔','이용이 제한되었습니다','운영진에 의해 카드 
 mk('kicked','📱','다른 기기에서 연결되었습니다','이 기기의 이용이 종료되었습니다.');
 mk('expired','⏳','이용 시간이 종료되었습니다','해당 회차 운영이 마감되었습니다.<br>참여해주셔서 감사합니다.');
 mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
-window.hook=n=>{$('.hd .idb').style.display=n==='err'?'none':''};
-dev({exited:'퇴장',banned:'차단',kicked:'다른기기',expired:'회차종료',err:'오류'});go('exited');
+const API=CasinoAPI,pad=n=>String(n).padStart(3,'0'),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lostCode=e=>e&&(e.code==='UNAUTHORIZED'||e.code==='STALE_TOKEN');
+const SEC=['exited','banned','kicked','expired'];
+function show(n){const s=API.meSession(),idb=$('.hd .idb');if(s&&n!=='err'&&n!=='kicked'){idb.style.display='';idb.querySelector('b').textContent=pad(s.card_id)}else idb.style.display='none';go(n)}
+async function boot(){const h=location.hash.slice(1);
+ if(SEC.includes(h))return show(h);
+ if(!API.meSession())return location.replace('/');
+ try{const r=await API.me.state(),c=r&&r.card;
+  if(!c){API.logout('me');return location.replace('/')}
+  if(c.status==='active')return location.replace('/play.html');
+  if(c.status==='banned')return show('banned');
+  if(c.status==='done')return show(r.exit_reason==='part_end'?'expired':'exited');
+  location.replace('/')}
+ catch(e){console.error(e);if(e&&e.code==='STALE_TOKEN')return show('kicked');if(e&&e.code==='UNAUTHORIZED')return location.replace('/');show('err')}}
+boot();
 </script></body></html>

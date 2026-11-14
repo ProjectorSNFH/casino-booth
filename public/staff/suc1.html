@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
 :root{--bg:#07080b;--p:rgba(22,24,32,.86);--ln:rgba(255,255,255,.12);--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
 *{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:14px Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh}
-#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh;padding-top:34px}
+#bg{position:fixed;inset:0;z-index:0}.wr{position:relative;z-index:1;min-height:100dvh}
 button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
 .tb{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--ln);background:var(--p);backdrop-filter:blur(8px)}.logo{font:17px Monoton,cursive;color:var(--amb)}
 .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--ln);background:var(--p);font-weight:600}.btn.g{background:var(--amb);color:#111;border-color:var(--amb)}.btn.r{border-color:#6a2c33;color:var(--red);background:none}.btn.w{background:none;border-color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}.big{width:100%;padding:18px;font-size:17px}
@@ -11,16 +11,15 @@ button{font:inherit;cursor:pointer;color:inherit}.rp{position:relative;overflow:
 .sp{position:relative;width:40px;height:40px;margin:30px auto}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 32px/1 'Space Grotesk';font-style:normal;opacity:0;animation:su 2s infinite}.sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}
 @keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
 #er{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);align-items:center;justify-content:center;text-align:center;padding:24px}#er.on{display:flex}#er h1{font-size:20px;margin:10px 0 6px}#er p{color:var(--mut);margin:0 0 20px}
-.tt{position:fixed;top:48px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
-#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:6px}#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}
+.tt{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
 .tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--ln)}.tag.a{color:var(--grn);border-color:#2c5a45}.tag.p{color:var(--amb);border-color:#5a4718}.tag.b{color:var(--red);border-color:#6a2c33}.tag.d{color:#7a828a}
 .hv .btn:hover{transform:translateY(-1px);filter:brightness(1.18)}.hv tbody tr:hover{background:#ffffff08}.btn{transition:.15s}
-.lay{display:flex;min-height:calc(100dvh - 90px)}.sd{width:350px;flex:none;border-right:1px solid var(--ln);padding:20px;background:var(--p);overflow-y:auto}.sd h3{margin:0 0 12px;font-size:14px}.sd h3.s{margin-top:22px;color:var(--mut)}
+.lay{display:flex;min-height:calc(100dvh - 56px)}.sd{width:350px;flex:none;border-right:1px solid var(--ln);padding:20px;background:var(--p);overflow-y:auto}.sd h3{margin:0 0 12px;font-size:14px}.sd h3.s{margin-top:22px;color:var(--mut)}
 .mn{flex:1;padding:22px 26px;overflow-x:auto}label{display:block;font-size:12px;color:var(--mut);margin:10px 0 5px}.pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.pt button{padding:4px 10px;border-radius:20px;border:1px solid var(--ln);background:none;font-size:11px;color:var(--mut)}.pt .on.a{color:var(--grn);border-color:#2c5a45;background:#1c3a2c}.pt .on.e{color:var(--red);border-color:#6a2c33;background:#3a1c20}
 .is{display:none;background:rgba(255,255,255,.05);border:1px solid var(--ln);border-radius:12px;padding:14px;margin:12px 0}.is.on{display:block}.is div{display:flex;justify-content:space-between;margin-bottom:8px}.is b{font-family:'Space Grotesk';font-size:15px}.sn{color:var(--grn)}.sn.w{color:var(--mut)}
-.rq{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;margin-bottom:8px}.rq .btn{padding:6px 10px;font-size:12px}
+.rq{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;margin-bottom:8px}.rq .btn{padding:6px 10px;font-size:12px}
 table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:var(--mut);padding:0 10px 10px;border-bottom:1px solid var(--ln)}td{padding:11px 10px;border-bottom:1px solid var(--ln)}.idn{font:700 15px 'Space Grotesk';color:var(--amb)}.cn{font-family:'Space Grotesk';color:var(--amb)}.cn.z{color:var(--red)}.rv{background:none;border:0;color:var(--mut);font-size:12px;margin-left:6px}
-.md{display:none;position:fixed;inset:0;background:#000a;z-index:25;align-items:center;justify-content:center}.md.on{display:flex}.md .cd{width:360px;padding:24px}</style></head><body class="hv"><canvas id="bg"></canvas><div id="dv"></div><div class="tt" id="tt"></div>
+.md{display:none;position:fixed;inset:0;background:#000a;z-index:25;align-items:center;justify-content:center}.md.on{display:flex}.md .cd{width:360px;padding:24px}</style></head><body class="hv"><canvas id="bg"></canvas><div class="tt" id="tt"></div>
 <div id="er"><div><div style="font-size:34px">🌐</div><h1>오류가 발생했습니다</h1><p>연결 지연 또는 연결하는 중에 오류가 발생하였습니다.</p><button class="btn g" onclick="location.reload()">↻ 새로고침</button></div></div>
 <div class="wr"><div class="tb"><span class="logo">CASINO</span><b>발급 데스크 · suc1</b><span class="mu" id="stat"></span></div>
 <div class="lay"><aside class="sd"><h3>회차 관리</h3><div class="cd c" style="padding:12px 14px"><div class="pt"><span>1부 (001~500)</span><span id="p1"></span></div><div class="pt" style="margin:0"><span>2부 (501~999)</span><span id="p2"></span></div></div>
@@ -31,43 +30,61 @@ table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;colo
 <h3 class="s">재연결 요청 <span class="mu" id="rqn"></span></h3><div id="rqs"></div></aside>
 <main class="mn"><div style="display:flex;gap:10px;margin-bottom:16px"><input class="in" id="sq" placeholder="식별번호 또는 이름 검색" oninput="R()"></div>
 <table><thead><tr><th>번호</th><th>이름</th><th>상태</th><th>진행 중 게임</th><th>코인</th><th>시각</th><th></th></tr></thead><tbody id="rows"></tbody></table></main></div>
-<div class="md" id="md"><div class="cd"><h3 style="margin:0 0 8px">이 카드를 이용 제한할까요?</h3><p class="mu" style="line-height:1.6">제한하면 참여자 화면이 즉시 차단 화면으로 바뀌고 되돌릴 수 없습니다.</p><div class="rw" style="display:flex;gap:10px"><button class="btn big rp" onclick="mdc()">취소</button><button class="btn r big rp" style="background:#3a1c20" onclick="ban()">이용 제한</button></div></div></div></div><script>
+<div class="md" id="md"><div class="cd"><h3 style="margin:0 0 8px" id="mt"></h3><p class="mu" style="line-height:1.6" id="mp"></p><div class="rw" style="display:flex;gap:10px"><button class="btn big rp" onclick="mdc()">취소</button><button class="btn r big rp" style="background:#3a1c20" id="mo" onclick="mok()">확인</button></div></div></div></div><script src="/js/casino-api.js"></script><script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
 addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
 const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2400)};
-window.FAIL=false;const lat=()=>new Promise((r,j)=>setTimeout(()=>window.FAIL?j(1):r(),300)),run=async f=>{try{await f()}catch(e){$('#er').classList.add('on')}};
-const rn=()=>Array.from(crypto.getRandomValues(new Uint8Array(5)),b=>'abcdefghijklmnopqrstuvwxyz'[b%26]).join('');
-function dev(o){for(const k in o){const b=document.createElement('button');b.textContent=k;b.className='rp';b.onclick=o[k];$('#dv').appendChild(b)}}
-
-
-const CAP={1:500,2:499},AC=15;let C=null,PS={1:'active',2:'ended'},cur=null,sess=null,RQ=[],nid={1:213,2:501},rv={},delId=null,fill=0,comp=0;
-const SEED={C:[{id:211,n:'홍길동',sid:'20231',part:1,st:'active',coins:37,game:'할리갈리',at:'14:02'},{id:209,n:'박서영',sid:'21042',part:1,st:'active',coins:0,game:'',at:'13:57'},{id:188,n:'이하진',sid:'20099',part:1,st:'banned',coins:12,game:'',at:'13:20'},{id:150,n:'김민수',sid:'22001',part:1,st:'done',coins:3,game:'',at:'13:10'}],RQ:[{id:209,sess:'xkqpd'}]};
-/* 서버 어댑터: 발급 가능 여부(회차/활성 15/정원/학번 중복)는 서버가 판단, 발급 슬롯은 stations.current_card_id로 복구 */
-const API={async load(){await lat();return JSON.parse(localStorage.getItem('s1')||'null')||SEED},save(){localStorage.setItem('s1',JSON.stringify({C,PS,cur,sess,RQ,nid}))},async act(){await lat()}};
-const mask=n=>n.length<3?n[0]+'*':n[0]+'*'.repeat(n.length-2)+n.slice(-1),act=()=>(C?C.filter(c=>c.st==='active').length:0)+fill,cnt=p=>C.filter(c=>c.part===p).length;
-function Pbtn(p){return `<span class="pt" style="margin:0;gap:6px"><button class="a rp ${PS[p]==='active'?'on':''}" onclick="setP(${p},'active')">진행중</button><button class="e rp ${PS[p]==='ended'?'on':''}" onclick="setP(${p},'ended')">종료</button></span>`}
-function R(){const t=$('#rows');if(!C){t.innerHTML=`<tr><td colspan=7>${SUIT}</td></tr>`;return}API.save();$('#p1').innerHTML=Pbtn(1);$('#p2').innerHTML=Pbtn(2);
- const p=+$('#pt').value;$('#capl').innerHTML=`발급 ${cnt(p)} / ${CAP[p]}명 · 현재 활성 <b style="color:${act()>=AC?'var(--red)':'var(--ink)'}">${act()} / ${AC}</b>명`;$('#stat').textContent='활성 '+act()+' / '+AC;
- [...$('#pt').options].forEach(o=>o.disabled=PS[o.value]==='ended');
- $('#rqn').textContent=RQ.length?`(${RQ.length})`:'';$('#rqs').innerHTML=RQ.length?RQ.map((r,i)=>`<div class="rq"><span><b class="idn">No.${r.id}</b> <span class="sn">${r.sess}</span></span><span><button class="btn rp" onclick="rqNo(${i})">거절</button> <button class="btn g rp" onclick="rqOk(${i})">확인</button></span></div>`).join(''):'<div class="mu">대기 중인 재연결 요청이 없습니다</div>';
+const ST=CasinoAPI.staff,ses=CasinoAPI.staffSession(),bad=!ses||ses.station!=='suc1';
+if(bad)location.replace('/staff/');
+CasinoAPI.onSessionLost(()=>location.replace('/staff/'));
+const GN={HALLIGALLI:'할리갈리',SKEWER:'꼬치의 달인',CHAMCHAMCHAM:'참참참',JOKER:'조커 뽑기',RANDOMBALL:'랜덤 공',TABLESOCCER:'테이블 축구',SLOTMACHINE:'슬롯 머신'};
+let C=null,P=null,rv={},rvT={},rqN={},busy=0,fails=0,sq1=0,sq2=0,mAct=null,comp=0,lastRows='',lastRq='';
+const mask=n=>n.length<3?n[0]+'*':n[0]+'*'.repeat(n.length-2)+n.slice(-1);
+const hhmm=t=>{try{return new Date(t).toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){return ''}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function run(f){busy++;try{await f()}catch(e){fail(e)}finally{busy--}}
+function fail(e){console.error(e);const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}
+ if(e&&e.status>=400&&e.status<500){toast(e.message||'처리할 수 없어요');syncAll().catch(()=>{});return}$('#er').classList.add('on')}
+async function syncState(){const my=++sq1,s=await ST.issueState();if(my!==sq1)return;const first=!P;P=s;fails=0;R();if(first&&P.pending)toast('진행 중이던 발급을 불러왔습니다')}
+async function syncCards(){const my=++sq2,r=await ST.issueCards();if(my!==sq2)return;C=r.cards;fails=0;R()}
+const syncAll=()=>Promise.all([syncState(),syncCards()]);
+const lim=()=>(P&&P.limits)||{},cap=p=>(lim().part_cap||{})[p]||0,AC=()=>lim().active_cap||0,PS=p=>(P.parts||{})[p]||'ended';
+function Pbtn(p){return `<span class="pt" style="margin:0;gap:6px"><button class="a rp ${PS(p)==='active'?'on':''}" onclick="setP(${p},'active')">진행중</button><button class="e rp ${PS(p)==='ended'?'on':''}" onclick="setP(${p},'ended')">종료</button></span>`}
+function R(){const t=$('#rows');if(!P||!C){t.innerHTML=`<tr><td colspan=7>${SUIT}</td></tr>`;return}
+ $('#p1').innerHTML=Pbtn(1);$('#p2').innerHTML=Pbtn(2);const act=P.counts.active,issued=P.counts.issued;
+ const sel=$('#pt');[...sel.options].forEach(o=>o.disabled=PS(+o.value)==='ended');if(sel.selectedOptions[0]&&sel.selectedOptions[0].disabled){const f=[...sel.options].find(o=>!o.disabled);if(f)sel.value=f.value}
+ const p=+sel.value;$('#capl').innerHTML=`발급 ${issued[p]||0} / ${cap(p)}명 · 현재 활성 <b style="color:${act>=AC()?'var(--red)':'var(--ink)'}">${act} / ${AC()}</b>명`;$('#stat').textContent='활성 '+act+' / '+AC();
+ const rq=P.reconnects||[];$('#rqn').textContent=rq.length?`(${rq.length})`:'';
+ const rh=rq.length?rq.map(r=>`<div class="rq"><span><b class="idn">No.${r.card_id}</b> <span class="sn">${esc(r.session_name)}</span>${rqN[r.claim_id]?` <b style="margin-left:6px">${esc(rqN[r.claim_id])}</b>`:''}</span><span><button class="btn rp" onclick="rqNm(${r.claim_id},${r.card_id})">이름</button> <button class="btn rp" onclick="rqNo(${r.claim_id})">거절</button> <button class="btn g rp" onclick="rqOk(${r.claim_id})">확인</button></span></div>`).join(''):'<div class="mu">대기 중인 재연결 요청이 없습니다</div>';
+ if(rh!==lastRq){lastRq=rh;$('#rqs').innerHTML=rh}
  const q=$('#sq').value.trim(),tier=s=>s==='banned'?2:s==='done'?1:0,L={active:'활성',pending:'대기',done:'퇴장',banned:'제한'},K={active:'a',pending:'p',done:'d',banned:'b'};
- t.innerHTML=[...C].filter(c=>!q||String(c.id).includes(q)||c.n.includes(q)).sort((a,b)=>tier(a.st)-tier(b.st)||a.id-b.id).map(c=>`<tr><td class="idn">No.${c.id}</td><td>${rv[c.id]?c.n:mask(c.n)}<button class="rv" onclick="rv[${c.id}]=!rv[${c.id}];R()">${rv[c.id]?'숨기기':'보기'}</button></td><td><span class="tag ${K[c.st]}">${L[c.st]}</span></td><td>${c.game||'-'}</td><td class="cn ${c.coins===0&&c.st==='active'?'z':''}">${c.coins}</td><td>${c.at}</td><td>${c.st==='active'?`<button class="btn rp" onclick="exitC(${c.id})">퇴장</button> <button class="btn r rp" onclick="delId=${c.id};$('#md').classList.add('on')">이용 제한</button>`:''}</td></tr>`).join('');
- const box=$('#is');box.classList.toggle('on',!!cur);$('#mb').textContent=cur?'확인':'발급';$('#mb').disabled=cur&&!sess;$('#mb').onclick=cur?confirmIssue:issue;$('#cb').style.display=cur?'block':'none';
- if(cur){$('#isn').textContent='No.'+cur;$('#iss').textContent=sess||'대기 중…';$('#iss').className='sn'+(sess?'':' w')}}
-const setP=(p,v)=>run(async()=>{await API.act();PS[p]=v;if(v==='ended')C.forEach(c=>{if(c.st==='active'&&(p===1?c.id<=500:c.id>=501)){c.st='done';c.game=''}});R()});
+ const html=[...C].filter(c=>!q||String(c.id).includes(q)||(c.name||'').includes(q)||(rv[c.id]||'').includes(q)).sort((a,b)=>tier(a.status)-tier(b.status)||a.id-b.id).map(c=>`<tr><td class="idn">No.${c.id}</td><td>${rv[c.id]?esc(rv[c.id]):esc(c.name)}<button class="rv" onclick="rvTog(${c.id})">${rv[c.id]?'숨기기':'보기'}</button></td><td><span class="tag ${K[c.status]||'d'}">${L[c.status]||c.status}</span></td><td>${GN[c.game]||c.game||'-'}</td><td class="cn ${c.coins===0&&c.status==='active'?'z':''}">${c.coins}</td><td>${hhmm(c.at)}</td><td>${c.status==='active'?`<button class="btn rp" onclick="exitC(${c.id})">퇴장</button> <button class="btn r rp" onclick="banC(${c.id})">이용 제한</button>`:''}</td></tr>`).join('');
+ if(html!==lastRows){lastRows=html;t.innerHTML=html}
+ const pd=P.pending,cur=pd?pd.card_id:null,sess=pd&&pd.claim&&!pd.claim.expired?pd.claim.session_name:null,exp=!!(pd&&pd.claim&&pd.claim.expired);
+ $('#is').classList.toggle('on',!!cur);$('#mb').textContent=cur?'확인':'발급';$('#mb').disabled=!!cur&&!sess;$('#mb').onclick=cur?confirmIssue:issue;$('#cb').style.display=cur?'block':'none';
+ if(cur){$('#isn').textContent='No.'+cur;$('#iss').textContent=exp?'시간 초과':sess||'대기 중…';$('#iss').className='sn'+(sess?'':' w');if(exp)$('#er2').textContent='참여자 입력 시간이 지났어요. 발급 취소 후 다시 발급해주세요.'}}
+const ask=(t,p,label,fn)=>{$('#mt').textContent=t;$('#mp').textContent=p;$('#mo').textContent=label;mAct=fn;$('#md').classList.add('on')};
+const mdc=()=>{mAct=null;$('#md').classList.remove('on')},mok=()=>{const f=mAct;mdc();if(f)f()};
+const setP=(p,v)=>{if(!P||PS(p)===v)return;const go=()=>run(async()=>{const r=await ST.issuePart({part:p,status:v});await syncAll();toast(v==='ended'?`${p}부 종료 · 퇴장 ${r.exited}장`+(r.deferred?` · 진행 중이라 보류 ${r.deferred}장`:''):`${p}부를 시작했습니다`)});
+ if(v==='ended'){const n=C?C.filter(c=>c.part===p&&c.status==='active').length:0;ask(`${p}부를 종료할까요?`,`활성 카드 ${n}장이 퇴장 처리되고 되돌릴 수 없어요. 게임이나 주문 중인 카드는 끝난 뒤에 퇴장돼요.`,'종료',go)}else go()};
 const issue=()=>run(async()=>{const p=+$('#pt').value,s=$('#sid').value.trim(),n=$('#nm').value.trim(),e=$('#er2');e.textContent='';
- if(PS[p]==='ended'){e.textContent='이 회차는 이미 종료되었습니다.';return}if(act()>=AC){e.textContent='현재 활성 인원이 가득 찼습니다 (15/15). 기존 참여자가 퇴장해야 발급할 수 있습니다.';return}
- if(cnt(p)>=CAP[p]){e.textContent='이 회차의 발급 인원 제한에 도달했습니다.';return}if(!/^\d{5}$/.test(s)||!/^[가-힣]{2,5}$/.test(n)){e.textContent='학번은 숫자 5자리, 이름은 한글 2~5자로 입력해주세요.';return}
- if(C.some(c=>c.sid===s)){e.textContent='이미 등록된 학번입니다. 중복 발급할 수 없습니다.';return}
- await API.act();const id=nid[p]++;C.push({id,n,sid:s,part:p,st:'pending',coins:0,game:'',at:new Date().toTimeString().slice(0,5)});cur=id;sess=null;R()});
-const confirmIssue=()=>run(async()=>{await API.act();const c=C.find(x=>x.id===cur);c.st='active';c.coins=5;cur=null;sess=null;$('#sid').value='';$('#nm').value='';R();toast('발급 완료 · WELCOME +5 기록')});
-const cancelIssue=()=>run(async()=>{await API.act();C=C.filter(x=>x.id!==cur);cur=null;sess=null;R()});
-const exitC=id=>run(async()=>{await API.act();const c=C.find(x=>x.id===id);c.st='done';c.game='';R()});
-const mdc=()=>$('#md').classList.remove('on'),ban=()=>run(async()=>{await API.act();C.find(x=>x.id===delId).st='banned';mdc();R()});
-const rqOk=i=>run(async()=>{await API.act();RQ.splice(i,1);R();toast('재연결 완료 · 새 기기 연결, 이전 기기는 종료됩니다')}),rqNo=i=>run(async()=>{await API.act();RQ.splice(i,1);R()});
+ if(!/^\d{5}$/.test(s)||!/^[가-힣]{2,5}$/.test(n)){e.textContent='학번은 숫자 5자리, 이름은 한글 2~5자로 입력해주세요.';return}
+ try{await ST.issueCreate({sid:s,name:n,part:p})}catch(x){if(x&&x.status>=400&&x.status<500&&x.code!=='UNAUTHORIZED'&&x.code!=='STALE_TOKEN'){e.textContent=x.message;await syncAll();return}throw x}
+ $('#sid').value='';$('#nm').value='';await syncAll()});
+const confirmIssue=()=>run(async()=>{const id=P.pending&&P.pending.card_id;if(!id)return;await ST.issueConfirm({card_id:id});$('#er2').textContent='';await syncAll();toast('발급 완료 · WELCOME +'+(lim().welcome_coins??'')+' 기록')});
+const cancelIssue=()=>run(async()=>{const id=P.pending&&P.pending.card_id;if(!id)return;await ST.issueCancel({card_id:id});$('#er2').textContent='';await syncAll()});
+const exitC=id=>ask(`No.${id} 카드를 퇴장 처리할까요?`,'퇴장하면 재참여할 수 없고 되돌릴 수 없어요.','퇴장',()=>run(async()=>{await ST.issueExit({card_id:id});await syncAll();toast(`No.${id} 퇴장 처리됨`)}));
+const banC=id=>ask('이 카드를 이용 제한할까요?','제한하면 참여자 화면이 즉시 차단 화면으로 바뀌고 되돌릴 수 없습니다.','이용 제한',()=>run(async()=>{await ST.issueBan({card_id:id});await syncAll();toast(`No.${id} 이용 제한됨`)}));
+const reveal=async id=>(await ST.issueReveal({card_id:id})).name;
+const rvTog=id=>{if(rv[id]){delete rv[id];lastRows='';R();return}run(async()=>{rv[id]=await reveal(id);lastRows='';R();clearTimeout(rvT[id]);rvT[id]=setTimeout(()=>{delete rv[id];lastRows='';R()},15000)})};
+const rqNm=(cl,id)=>run(async()=>{rqN[cl]=await reveal(id);lastRq='';R();setTimeout(()=>{delete rqN[cl];lastRq='';R()},15000)});
+const rqOk=cl=>run(async()=>{await ST.reconnectConfirm({claim_id:cl});delete rqN[cl];await syncAll();toast('재연결 완료 · 새 기기 연결, 이전 기기는 종료됩니다')}),rqNo=cl=>run(async()=>{await ST.reconnectReject({claim_id:cl});delete rqN[cl];await syncAll()});
 const NM=$('#nm');NM.addEventListener('compositionstart',()=>comp=1);NM.addEventListener('compositionend',()=>{comp=0;NM.value=NM.value.replace(/[^가-힣]/g,'').slice(0,5)});NM.addEventListener('input',()=>{if(!comp)NM.value=NM.value.replace(/[^가-힣]/g,'').slice(0,5)});
 $('#sid').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,5));$('#pt').addEventListener('change',R);
-run(async()=>{const s=await API.load();C=s.C;RQ=s.RQ||[];if(s.PS){PS=s.PS;cur=s.cur;sess=s.sess;nid=s.nid}R();if(cur)toast('진행 중이던 발급을 불러왔습니다')});R();
-dev({'참여자 번호 입력(세션명 도착)':()=>{if(cur){sess=rn();R()}else toast('먼저 발급을 눌러주세요')},'재연결 요청 도착':()=>{RQ.push({id:211,sess:rn()});R()},'활성 인원 가득':()=>{fill=AC-act()+fill;R()},'가득 해제':()=>{fill=0;R()},'1부 종료(자동 퇴장)':()=>setP(1,'ended'),'오류':()=>$('#er').classList.add('on')});
+/* 시작: 처음 한 번 불러오고, 2초마다 상태(세션명·재연결 요청), 6초마다 카드 표를 맞춘다 */
+const pollS=async()=>{if(document.hidden||busy||bad)return;try{await syncState()}catch(e){bump(e)}},pollC=async()=>{if(document.hidden||busy||bad)return;try{await syncCards()}catch(e){bump(e)}};
+function bump(e){const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}if(++fails>=3)$('#er').classList.add('on')}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){pollS();pollC()}});
+(async()=>{if(bad)return;R();try{await syncAll()}catch(e){fail(e)}setInterval(pollS,2000);setInterval(pollC,6000)})();
 </script></body></html>

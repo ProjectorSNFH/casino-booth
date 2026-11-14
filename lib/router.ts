@@ -20,6 +20,8 @@ import gameScan from './routes/game-scan';
 import gameSettle from './routes/game-settle';
 import gameStart from './routes/game-start';
 import gameState from './routes/game-state';
+import hofList from './routes/hof-list';
+import hofWinnerPii from './routes/hof-winner-pii';
 import issueCancel from './routes/issue-cancel';
 import issueConfirm from './routes/issue-confirm';
 import issueCreate from './routes/issue-create';
@@ -81,6 +83,8 @@ export const routes: Record<string, Route> = {
   'adjust/tlist-delete': adjustTlistDelete,
   'adjust/glist-set': adjustGlistSet,
   'event/slot': eventSlot,
+  'hof/list': hofList,
+  'hof/winner-pii': hofWinnerPii,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

@@ -23,6 +23,15 @@ import issueState from './routes/issue-state';
 import meAck from './routes/me-ack';
 import meBet from './routes/me-bet';
 import meLeave from './routes/me-leave';
+import shopApprove from './routes/shop-approve';
+import shopCancel from './routes/shop-cancel';
+import shopDeliver from './routes/shop-deliver';
+import shopOrder from './routes/shop-order';
+import shopOrders from './routes/shop-orders';
+import shopProducts from './routes/shop-products';
+import shopQueue from './routes/shop-queue';
+import shopReject from './routes/shop-reject';
+import shopStock from './routes/shop-stock';
 import staffEnter from './routes/staff-enter';
 
 type Route = (req: VercelRequest, res: VercelResponse) => Promise<void>;
@@ -51,6 +60,15 @@ export const routes: Record<string, Route> = {
   'game/settle': gameSettle,
   'game/abort': gameAbort,
   'me/ack': meAck,
+  'shop/products': shopProducts,
+  'shop/order': shopOrder,
+  'shop/cancel': shopCancel,
+  'shop/orders': shopOrders,
+  'shop/approve': shopApprove,
+  'shop/reject': shopReject,
+  'shop/stock': shopStock,
+  'shop/queue': shopQueue,
+  'shop/deliver': shopDeliver,
   'me/bet': meBet,
   'me/leave': meLeave,
 };

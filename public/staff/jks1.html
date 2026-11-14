@@ -33,7 +33,7 @@ button{font:inherit;cursor:pointer}.rp{position:relative;overflow:hidden}.rip{po
 <div id="sc"><div class="scb"><video id="sv" playsinline muted></video><div class="sf"></div></div><p id="sm"></p><div class="mn"><input id="mi" inputmode="numeric" maxlength="3" placeholder="카드 번호"><button class="mb rp" onclick="manual()">확인</button></div><button class="sc2 rp" onclick="closeScan()">닫기</button></div>
 <div class="app" id="app"><div class="hd" id="hd"><div class="sd"><button class="rb" id="stop" onclick="stopArm()">⏸</button></div><div class="tc"><small>CASINO</small><b id="ht"></b></div><div class="sd"><button class="rb" id="ok" onclick="stopOk()">✓</button></div></div>
 <div id="body"></div><div class="ft"><div id="fb"></div><div id="hn"></div></div></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script><script src="/js/casino-api.js"></script>
+<script src="/js/jsqr.js"></script><script src="/js/casino-api.js"></script>
 <script>
 const CFG={"code": "jks1", "name": "조커 뽑기", "key": "JOKER", "max": 1, "layout": [[0]], "mult": 5, "half": 0, "nobet": 0, "plays": 2};const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
@@ -78,14 +78,21 @@ function foot(){const F=$('#fb'),H=$('#hn'),P=S.phase,n=rdy().length;let h='',t=
  F.innerHTML=h;H.textContent=t}
 function openScan(i){scanAt=i;$('#mi').value='';$('#sc').classList.add('on');startCam()}
 function closeScan(){if(cam){cam.getTracks().forEach(t=>t.stop());cam=null}$('#sv').srcObject=null;$('#sc').classList.remove('on')}
-async function startCam(){const v=$('#sv'),m=$('#sm');m.textContent='카메라를 켜는 중…';
- try{cam=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280}},audio:false});v.srcObject=cam;await v.play();m.textContent='카드의 QR을 사각형 안에 비춰주세요';look()}
- catch(e){cam=null;m.textContent='카메라를 쓸 수 없어요. 카드 번호를 직접 입력해주세요'}}
-function look(){if(!cam)return;const v=$('#sv');
- if(v.readyState>=2&&window.jsQR&&v.videoWidth){const c=look.c||(look.c=document.createElement('canvas')),k=Math.min(1,640/Math.max(v.videoWidth,v.videoHeight));c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);
-  const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height),r=jsQR(d.data,c.width,c.height,{inversionAttempts:'attemptBoth'}),u=r&&String(r.data).toUpperCase().match(/[0-9A-HJKMNP-TV-Z]{16}/);
-  if(u){closeScan();scan(scanAt,{uid:u[0]});return}}
- setTimeout(look,150)}
+const say=t=>{$('#sm').textContent=t};
+let bd=null;try{if('BarcodeDetector' in window)bd=new BarcodeDetector({formats:['qr_code']})}catch(e){}
+async function startCam(){say('카메라를 켜는 중…');
+ try{cam=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});const v=$('#sv');v.srcObject=cam;await v.play();say('카드의 QR을 사각형 안에 비춰주세요');look.t0=Date.now();look()}
+ catch(e){cam=null;say(e&&e.name==='NotAllowedError'?'카메라 권한이 꺼져 있어요. 브라우저 설정에서 허용하거나 번호를 직접 입력해주세요':'카메라를 쓸 수 없어요. 카드 번호를 직접 입력해주세요')}}
+async function decode(v){
+ if(bd){try{const r=await bd.detect(v);if(r.length&&r[0].rawValue)return r[0].rawValue}catch(e){}}
+ if(window.jsQR&&v.videoWidth){const c=decode.c||(decode.c=document.createElement('canvas')),k=Math.min(1,960/Math.max(v.videoWidth,v.videoHeight));c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);
+  const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height),r=jsQR(d.data,c.width,c.height,{inversionAttempts:'attemptBoth'});if(r&&r.data)return r.data}
+ return ''}
+async function look(){if(!cam)return;const v=$('#sv');
+ if(!bd&&!window.jsQR&&Date.now()-look.t0>2500)say('QR 인식 기능을 불러오지 못했어요. 카드 번호를 직접 입력해주세요');
+ else if(v.readyState>=2){const t=await decode(v);if(!cam)return;
+  if(t){const u=String(t).toUpperCase().match(/[0-9A-HJKMNP-TV-Z]{16}/);if(u){say('인식됨 ✓');closeScan();scan(scanAt,{uid:u[0]});return}say('카드 QR이 아니에요 (읽힌 값: '+String(t).slice(0,24)+')')}}
+ setTimeout(look,120)}
 function manual(){const n=parseInt($('#mi').value,10);if(!(n>=1&&n<=999)){$('#sm').textContent='1~999 사이 번호를 입력해주세요';return}closeScan();scan(scanAt,{card_id:n})}
 const scan=(i,body)=>run(async()=>{S.slots[i]={stage:'scanning'};R();
  try{await ST.gameScan(body)}catch(e){const k=e&&e.code;

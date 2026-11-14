@@ -3,7 +3,7 @@
 :root{--bg:#07080b;--p:rgba(22,24,32,.82);--ln:rgba(255,255,255,.12);--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,'Noto Sans KR',sans-serif;min-height:100dvh;display:flex;justify-content:center}
-#bg{position:fixed;inset:0;z-index:0}.app{position:relative;z-index:1;width:100%;max-width:420px;min-height:100dvh;display:flex;flex-direction:column;padding-top:36px}
+#bg{position:fixed;inset:0;z-index:0}.app{position:relative;z-index:1;width:100%;max-width:420px;min-height:100dvh;display:flex;flex-direction:column}
 button{font:inherit;cursor:pointer}.rp{position:relative;overflow:hidden}.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.26);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}@keyframes rp{to{transform:scale(1);opacity:0}}
 .hd{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--ln);background:var(--p);backdrop-filter:blur(8px)}
 .sd{width:42px;display:flex;justify-content:flex-end}.sd:first-child{justify-content:flex-start}
@@ -17,48 +17,50 @@ button{font:inherit;cursor:pointer}.rp{position:relative;overflow:hidden}.rip{po
 .id{font:700 21px 'Space Grotesk';color:var(--amb)}.mu{font-size:11.5px;color:var(--mut)}.bt{font:700 22px 'Space Grotesk'}.dl{font:700 24px 'Space Grotesk'}.dl.p{color:var(--grn)}.dl.n{color:var(--red)}
 .sl.sel{border-color:var(--amb);box-shadow:0 0 0 2px var(--amb) inset}.sl.tap{cursor:pointer}.sl.den{border-color:#6a2c33}
 .pk{display:flex;gap:8px;width:100%}.pk button{flex:1;padding:12px 0;border-radius:12px;border:1px solid var(--ln);font-weight:600}.pk .w{background:#1c3a2c;color:var(--grn)}.pk .l{background:#3a1c20;color:var(--red)}.pk .on{outline:2px solid currentColor}
-.ft{padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px))}.mb{width:100%;padding:16px;border-radius:14px;border:0;font-size:16px;font-weight:600;background:var(--amb);color:#111}.mb:disabled{opacity:.35}.rw{display:flex;gap:10px}.rw .g{background:none;border:1.5px solid #fff;color:#fff;flex:.6}
+.ft{padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px))}.mb{width:100%;padding:16px;border-radius:14px;border:0;font-size:16px;font-weight:600;background:var(--amb);color:#111}.mb:disabled{opacity:.35}.rw{display:flex;gap:10px}.rw .g{background:none;border:1.5px solid #fff;color:#fff;flex:0 0 96px;width:96px}.rw .mb:not(.g){flex:1;width:auto}
 #hn{text-align:center;font-size:12px;color:var(--mut);margin-top:8px;min-height:16px}
 .sp{position:relative;width:40px;height:40px;margin:0 auto}.sp i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 32px/1 'Space Grotesk';font-style:normal;opacity:0;animation:su 2s infinite}
 .sp i:nth-child(odd){color:#e8ebf0}.sp i:nth-child(even){color:#ff4d5e}.sp i:nth-child(2){animation-delay:.5s}.sp i:nth-child(3){animation-delay:1s}.sp i:nth-child(4){animation-delay:1.5s}
 @keyframes su{0%{opacity:0;transform:scale(.5) rotate(-20deg)}6%{opacity:1;transform:scale(1) rotate(0)}22%{opacity:1}28%{opacity:0;transform:scale(1.35)}100%{opacity:0}}
 #er{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);align-items:center;justify-content:center;text-align:center;padding:24px}#er.on{display:flex}#er h1{font-size:20px;margin:10px 0 6px}#er p{color:var(--mut);font-size:14px;margin:0 0 20px}
-.tt{position:fixed;top:92px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
-#dv{position:fixed;top:0;left:0;right:0;z-index:20;background:#000c;display:flex;gap:4px;overflow-x:auto;padding:6px}#dv button{flex:none;font:11px Inter;padding:5px 9px;border-radius:20px;border:1px solid #333;background:#161616;color:#aaa}
-</style></head><body><canvas id="bg"></canvas><div id="dv"></div><div class="tt" id="tt"></div>
+.tt{position:fixed;top:56px;left:50%;transform:translateX(-50%);background:#fff;color:#111;font-weight:600;font-size:13px;padding:9px 16px;border-radius:20px;z-index:40;display:none}
+#sc{display:none;position:fixed;inset:0;z-index:25;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px}#sc.on{display:flex}
+.scb{position:relative;width:min(80vw,320px);aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--ln);background:#000}#sv{width:100%;height:100%;object-fit:cover}.sf{position:absolute;inset:18%;border:2px solid var(--amb);border-radius:14px;box-shadow:0 0 0 999px #0005}
+#sm{color:var(--mut);font-size:13px;text-align:center;min-height:18px;margin:0}.mn{display:flex;gap:8px;width:min(80vw,320px)}.mn input{flex:1;min-width:0;padding:12px;border-radius:12px;border:1px solid var(--ln);background:rgba(0,0,0,.35);color:#fff;font:600 16px Inter;text-align:center}.mn input:focus{outline:0;border-color:var(--amb)}.mn .mb{width:90px;padding:12px}
+.sc2{width:min(80vw,320px);padding:14px;border-radius:14px;border:1.5px solid #fff;background:none;color:#fff;font-size:15px;font-weight:600}
+</style></head><body><canvas id="bg"></canvas><div class="tt" id="tt"></div>
 <div id="er"><div><div style="font-size:34px">🌐</div><h1>오류가 발생했습니다</h1><p>연결 지연 또는 연결하는 중에 오류가 발생하였습니다.</p><button class="mb" style="width:200px" onclick="location.reload()">↻ 새로고침</button></div></div>
+<div id="sc"><div class="scb"><video id="sv" playsinline muted></video><div class="sf"></div></div><p id="sm"></p><div class="mn"><input id="mi" inputmode="numeric" maxlength="3" placeholder="카드 번호"><button class="mb rp" onclick="manual()">확인</button></div><button class="sc2 rp" onclick="closeScan()">닫기</button></div>
 <div class="app" id="app"><div class="hd" id="hd"><div class="sd"><button class="rb" id="stop" onclick="stopArm()">⏸</button></div><div class="tc"><small>CASINO</small><b id="ht"></b></div><div class="sd"><button class="rb" id="ok" onclick="stopOk()">✓</button></div></div>
 <div id="body"></div><div class="ft"><div id="fb"></div><div id="hn"></div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script><script src="/js/casino-api.js"></script>
 <script>
 const CFG={"code": "ayh1", "name": "참참참", "key": "CHAMCHAMCHAM", "max": 1, "layout": [[0]], "mult": 1.5, "half": 1, "nobet": 0, "plays": 4};const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);const f=t=>{const h=c.height,pf=(t/5200)%1.5;x.clearRect(0,0,c.width,h);for(let y=S/2;y<h;y+=S)for(let u=S/2;u<c.width;u+=S){const d=1-y/h+Math.sin(u/70+t/1100)*.025,k=Math.max(0,1-Math.abs(d-pf)*4.5);x.fillStyle=`rgba(255,255,255,${.06+.45*k})`;x.beginPath();x.arc(u,y,1+1.2*k,0,6.3);x.fill()}requestAnimationFrame(f)};requestAnimationFrame(f)})();
 addEventListener('pointerdown',e=>{const t=e.target.closest('.rp');if(!t)return;const r=t.getBoundingClientRect(),d=Math.max(r.width,r.height)*1.5,i=document.createElement('i');i.className='rip';i.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;t.appendChild(i);setTimeout(()=>i.remove(),600)});
 const SUIT='<div class="sp"><i>♠︎</i><i>♥︎</i><i>♣︎</i><i>♦︎</i></div>',toast=m=>{const t=$('#tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)};
 $('#ht').textContent=CFG.name+' 0'+CFG.code.slice(-1);
-/* ===== 서버 어댑터: 아래 API만 fetch로 교체하면 됩니다 (현재는 localStorage 목업) ===== */
-const POOL=[{id:211,coins:37},{id:301,coins:12},{id:322,coins:9},{id:145,coins:60},{id:188,coins:25},{id:209,coins:0}];
-const PL=()=>JSON.parse(localStorage.getItem('pl_'+CFG.key)||'{}');
-const API={fail:false,lat(){return new Promise((r,j)=>setTimeout(()=>this.fail?j(new Error('x')):r(),350))},
- async state(){return JSON.parse(localStorage.getItem('st_'+CFG.code)||'null')},
- async save(s){localStorage.setItem('st_'+CFG.code,JSON.stringify(s))},
- async scan(){await this.lat();const used=S.slots.filter(Boolean).map(s=>s.id),c=POOL.find(p=>!used.includes(p.id));if(!c)return{denied:'none'};const n=PL()[c.id]||(c.id===188?CFG.plays:0);
-  if(n>=CFG.plays)return{id:c.id,denied:'limit'};if(CFG.nobet?c.coins<2:c.coins<1)return{id:c.id,denied:'low'};return c},
- async bet(c){await new Promise(r=>setTimeout(r,1200));return CFG.nobet?0:Math.max(1,Math.min(c.coins,[3,5,8,4][c.id%4]))},
- async start(){await this.lat()},async end(){await this.lat()},async abort(){await this.lat()},
- async settle(p){await this.lat();const m=PL();p.deltas.forEach(d=>{const id=S.slots[d.i].id;m[id]=(m[id]||0)+1});localStorage.setItem('pl_'+CFG.key,JSON.stringify(m))}};
+/* ===== 서버 연결: 화면 상태는 서버가 기준이고 2초마다 game/state로 맞춘다 ===== */
+const ST=CasinoAPI.staff,STG={scanned:'wait',bet_set:'check',ready:'ready'},ses=CasinoAPI.staffSession(),bad=!ses||ses.station!==CFG.code;
+if(bad)location.replace('/staff/');
+CasinoAPI.onSessionLost(()=>location.replace('/staff/'));
 /* ===== 상태 / 계산 ===== */
-let S={phase:'prep',slots:Array(CFG.max).fill(null),vs:null,win:null},armed=false;
+let S={mid:null,phase:'prep',slots:Array(CFG.max).fill(null),vs:null,win:null},armed=false,busy=0,sig='',seq=0,fails=0,cam=null,scanAt=0;
 const rdy=()=>S.slots.map((s,i)=>s&&s.stage==='ready'?{i,bet:s.bet,id:s.id}:null).filter(Boolean),pend=()=>S.slots.some(s=>s&&['scanning','wait','check'].includes(s.stage));
-function calc(){const sl=rdy(),w=S.win;if(CFG.nobet)return sl.map(s=>({i:s.i,d:w==='W'?2:-2}));
- if(S.vs==='staff'){const s=sl[0],b=s.bet;return[{i:s.i,d:w==='W'?Math.floor(b*CFG.mult)-b:-(CFG.half?Math.floor(b/2):b)}]}
- const o=sl.filter(s=>s.i!==w).reduce((t,s)=>t+s.bet,0);return sl.map(s=>({i:s.i,d:s.i===w?s.bet+o:-s.bet}))}
-const dOf=i=>(calc().find(d=>d.i===i)||{}).d;
-async function run(f){try{await f()}catch(e){$('#er').classList.add('on')}}
+const dOf=i=>(S.slots[i]||{}).delta;
+async function run(f){busy++;try{await f()}catch(e){fail(e)}finally{busy--}}
+function fail(e){console.error(e);const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}
+ if(e&&e.status>=400&&e.status<500){toast(e.message||'처리할 수 없어요');sync().catch(()=>{});return}$('#er').classList.add('on')}
+async function sync(){const my=++seq,r=await ST.gameState();if(my!==seq)return;const m=r.match,sl=Array(CFG.max).fill(null);
+ (r.slots||[]).forEach(x=>{if(x.slot<CFG.max)sl[x.slot]={stage:STG[x.stage]||'wait',id:x.card_id,bet:x.bet,delta:x.proposed_delta,acked:x.acked}});
+ S.slots.forEach((x,i)=>{if(!sl[i]&&x&&(x.stage==='scanning'||x.stage==='denied'))sl[i]=x});
+ const ph=m?m.phase:'prep';let win=m&&m.win!=null?(m.vs==='friends'&&!CFG.nobet?Number(m.win):m.win):null;if(ph==='pick'&&S.phase==='pick'&&S.win!==null)win=S.win;
+ S={mid:m?m.id:null,phase:ph,slots:sl,vs:m?m.vs:null,win};fails=0;if(JSON.stringify([S.mid,S.phase,S.vs,S.win,S.slots])!==sig)R();return !!m}
 function slotEl(i){const s=S.slots[i],e=document.createElement('div');e.className='sl';const P=S.phase;
  if(P==='pick'&&s&&S.vs==='friends'){e.classList.add('tap');if(S.win===i)e.classList.add('sel');e.onclick=()=>{S.win=i;R()}}
- if(!s){e.innerHTML=P==='prep'?`<div class="t"><span class="mu">대기 슬롯</span></div><div class="b"><button class="cam rp" onclick="scan(${i})">📷</button></div>`:`<div class="t"><span class="mu">미참여</span></div><div class="b"><span class="lb" style="color:#555">-</span></div>`;return e}
+ if(!s){e.innerHTML=P==='prep'?`<div class="t"><span class="mu">대기 슬롯</span></div><div class="b"><button class="cam rp" onclick="openScan(${i})">📷</button></div>`:`<div class="t"><span class="mu">미참여</span></div><div class="b"><span class="lb" style="color:#555">-</span></div>`;return e}
  if(s.stage==='scanning'){e.innerHTML=`<div class="t">${SUIT}<span class="mu">인식 중…</span></div><div class="b"></div>`;return e}
- if(s.stage==='denied'){e.classList.add('den');e.innerHTML=`<div class="t"><div class="id">No.${s.id}</div><b style="color:var(--red);font-size:14px">${s.why==='limit'?'참여 횟수 초과':'코인 부족'}</b><span class="mu">${s.why==='limit'?'최대 '+CFG.plays+'회까지 참여할 수 있어요':'이 게임에 필요한 코인이 부족해요'}</span></div><div class="b"><button class="x rp" style="border:0!important" onclick="clr(${i})">✕ 닫기</button></div>`;return e}
+ if(s.stage==='denied'){e.classList.add('den');e.innerHTML=`<div class="t"><b style="color:var(--red);font-size:14px">${s.why==='PLAY_LIMIT'?'참여 횟수 초과':s.why==='LOW_COINS'?'코인 부족':'참여할 수 없어요'}</b><span class="mu">${s.msg||''}</span></div><div class="b"><button class="x rp" style="border:0!important" onclick="clr(${i})">✕ 닫기</button></div>`;return e}
  if(s.stage==='wait'){e.innerHTML=`<div class="t"><div class="id">No.${s.id}</div>${SUIT}<span class="mu">${CFG.nobet?'참여 확인 중…':'베팅 설정 중…'}</span></div><div class="b"></div>`;return e}
  const bet=CFG.nobet?'<span class="mu">무베팅</span>':`<span class="mu">베팅</span><div class="bt">${s.bet}</div>`;
  if(s.stage==='check'){e.innerHTML=`<div class="t"><div class="id">No.${s.id}</div>${bet}</div><div class="b"><button class="x rp" onclick="rej(${i})">✕</button><button class="v rp" onclick="acc(${i})">✓</button></div>`;return e}
@@ -67,27 +69,41 @@ function slotEl(i){const s=S.slots[i],e=document.createElement('div');e.classNam
  if(P==='review'){const d=dOf(i);top+=`<div class="dl ${d>0?'p':d<0?'n':''}">${d>0?'+':''}${d}</div>`;bot=`<span class="lb">${s.acked?'✓ 참여자 확인':'참여자 확인 대기'}</span>`}
  else bot=`<span class="lb">${P==='prep'?'✓ 준비 완료':P==='playing'?'진행 중':P==='pick'?(S.vs==='friends'?(S.win===i?'승자 선택됨':'탭하여 승자 선택'):'결과 선택'):''}</span>`;
  e.innerHTML=`<div class="t">${top}</div><div class="b">${bot}</div>`;return e}
-function R(){const b=$('#body');b.innerHTML='';b.className=CFG.max===1?'one':'';CFG.layout.forEach(r=>{const d=document.createElement('div');d.className='tr';r.forEach(i=>d.appendChild(slotEl(i)));b.appendChild(d)});foot();API.save(S)}
+function R(){const b=$('#body');b.innerHTML='';b.className=CFG.max===1?'one':'';CFG.layout.forEach(r=>{const d=document.createElement('div');d.className='tr';r.forEach(i=>d.appendChild(slotEl(i)));b.appendChild(d)});foot();sig=JSON.stringify([S.mid,S.phase,S.vs,S.win,S.slots])}
 function foot(){const F=$('#fb'),H=$('#hn'),P=S.phase,n=rdy().length;let h='',t='';
  if(P==='prep'){const vs=CFG.max===1||n<=1?'staff':'friends';h=`<button class="mb rp" ${n<1||pend()?'disabled':''} onclick="start()">시작</button>`;t=pend()?'확인 대기 중인 참여자가 있어요':n<1?'참여자를 스캔해주세요':CFG.nobet?'운영진 대결 (승리 +2 / 패배 -2)':vs==='staff'?`운영진 대결 (승리 ×${CFG.mult})`:`친구 대결 (${n}명)`}
  else if(P==='playing'){h='<button class="mb rp" onclick="endM()">종료</button>';t='오프라인에서 진행한 뒤 종료를 눌러주세요'}
- else if(P==='pick'){h=`<button class="mb rp" ${S.win===null?'disabled':''} onclick="S.phase='review';ackSim();R()">최종 확인</button>`;t=S.vs==='friends'?'이긴 참여자를 탭해주세요':'승리/패배를 선택해주세요'}
- else{h='<div class="rw"><button class="mb g rp" onclick="S.phase=\'pick\';R()">뒤로</button><button class="mb rp" onclick="settle()">승인 (정산하기)</button></div>';const a=rdy().filter(s=>S.slots[s.i].acked).length;t=`참여자 확인 ${a}/${n} · 확인 없이도 승인할 수 있어요`}
+ else if(P==='pick'){h=`<button class="mb rp" ${S.win===null?'disabled':''} onclick="confirmResult()">최종 확인</button>`;t=S.vs==='friends'?'이긴 참여자를 탭해주세요':'승리/패배를 선택해주세요'}
+ else{h='<div class="rw"><button class="mb g rp" onclick="goBack()">뒤로</button><button class="mb rp" onclick="settle()">승인 (정산하기)</button></div>';const a=rdy().filter(s=>S.slots[s.i].acked).length;t=`참여자 확인 ${a}/${n} · 확인 없이도 승인할 수 있어요`}
  F.innerHTML=h;H.textContent=t}
-const scan=i=>run(async()=>{S.slots[i]={stage:'scanning'};R();const c=await API.scan();if(c.denied){S.slots[i]=c.denied==='none'?null:{stage:'denied',id:c.id,why:c.denied};if(c.denied==='none')toast('스캔할 수 있는 카드가 없어요');R();return}
- S.slots[i]={stage:'wait',id:c.id,coins:c.coins};R();const b=await API.bet(c);if(S.slots[i]&&S.slots[i].id===c.id){S.slots[i].bet=b;S.slots[i].stage='check';R()}});
-const clr=i=>{S.slots[i]=null;R()},rej=i=>{S.slots[i]=null;R()},acc=i=>{S.slots[i].stage='ready';R()};
-const start=()=>run(async()=>{await API.start();S.vs=CFG.max===1||rdy().length<=1?'staff':'friends';S.phase='playing';R()});
-const endM=()=>run(async()=>{await API.end();S.phase='pick';S.win=null;R()});
-function ackSim(){rdy().forEach(s=>setTimeout(()=>{if(S.phase==='review'&&S.slots[s.i]){S.slots[s.i].acked=1;R()}},1200+Math.random()*2500))}
-const settle=()=>run(async()=>{await API.settle({deltas:calc()});toast('정산 완료');S={phase:'prep',slots:Array(CFG.max).fill(null),vs:null,win:null};R()});
+function openScan(i){scanAt=i;$('#mi').value='';$('#sc').classList.add('on');startCam()}
+function closeScan(){if(cam){cam.getTracks().forEach(t=>t.stop());cam=null}$('#sv').srcObject=null;$('#sc').classList.remove('on')}
+async function startCam(){const v=$('#sv'),m=$('#sm');m.textContent='카메라를 켜는 중…';
+ try{cam=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280}},audio:false});v.srcObject=cam;await v.play();m.textContent='카드의 QR을 사각형 안에 비춰주세요';look()}
+ catch(e){cam=null;m.textContent='카메라를 쓸 수 없어요. 카드 번호를 직접 입력해주세요'}}
+function look(){if(!cam)return;const v=$('#sv');
+ if(v.readyState>=2&&window.jsQR&&v.videoWidth){const c=look.c||(look.c=document.createElement('canvas')),k=Math.min(1,640/Math.max(v.videoWidth,v.videoHeight));c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);
+  const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height),r=jsQR(d.data,c.width,c.height,{inversionAttempts:'attemptBoth'}),u=r&&String(r.data).toUpperCase().match(/[0-9A-HJKMNP-TV-Z]{16}/);
+  if(u){closeScan();scan(scanAt,{uid:u[0]});return}}
+ setTimeout(look,150)}
+function manual(){const n=parseInt($('#mi').value,10);if(!(n>=1&&n<=999)){$('#sm').textContent='1~999 사이 번호를 입력해주세요';return}closeScan();scan(scanAt,{card_id:n})}
+const scan=(i,body)=>run(async()=>{S.slots[i]={stage:'scanning'};R();
+ try{await ST.gameScan(body)}catch(e){const k=e&&e.code;
+  if(e&&e.status>=400&&e.status<500&&k!=='UNAUTHORIZED'&&k!=='STALE_TOKEN'){S.slots[i]={stage:'denied',why:k,msg:e.message};R();return}
+  S.slots[i]=null;R();throw e}
+ S.slots[i]=null;await sync()});
+const clr=i=>{S.slots[i]=null;R()};
+const rej=i=>run(async()=>{await ST.gameReject({match_id:S.mid,slot:i});await sync()}),acc=i=>run(async()=>{await ST.gameAccept({match_id:S.mid,slot:i});await sync()});
+const start=()=>run(async()=>{await ST.gameStart();await sync()});
+const endM=()=>run(async()=>{await ST.gameEnd();await sync()});
+const confirmResult=()=>run(async()=>{await ST.gameResult({win:S.win});await sync()});
+const goBack=()=>run(async()=>{await ST.gameBack();await sync()});
+const settle=()=>run(async()=>{const r=await ST.gameSettle({match_id:S.mid});toast(r.already?'이미 정산된 게임이에요':'정산 완료');await sync()});
 function stopArm(){armed=true;$('#hd').classList.add('cf');$('#stop').textContent='✕';$('#stop').classList.add('arm');$('#stop').onclick=stopNo;$('#ht').textContent='정지하시겠습니까?'}
 function stopNo(){armed=false;$('#hd').classList.remove('cf');$('#stop').textContent='⏸';$('#stop').classList.remove('arm');$('#stop').onclick=stopArm;$('#ht').textContent=CFG.name+' 0'+CFG.code.slice(-1)}
-const stopOk=()=>run(async()=>{await API.abort();S={phase:'prep',slots:Array(CFG.max).fill(null),vs:null,win:null};stopNo();R()});
-/* ===== 검토용 막대 ===== */
-const mkR=(n)=>({stage:'ready',id:[211,301,322,145][n],bet:CFG.nobet?0:[5,3,6,4][n]}),mkS=(n,p,v,w)=>{S={phase:p,slots:Array(CFG.max).fill(null),vs:v,win:w};for(let i=0;i<n;i++)S.slots[i]=mkR(i);R()};
-const DEMO={'준비':()=>mkS(0,'prep'),'확인단계':()=>{mkS(0,'prep');S.slots[0]={stage:'check',id:211,bet:CFG.nobet?0:5};R()},'1명 준비':()=>mkS(1,'prep'),'친구 준비':()=>CFG.max>1&&mkS(2,'prep'),'진행':()=>mkS(CFG.max>1?2:1,'playing',CFG.max>1?'friends':'staff'),'결과선택':()=>mkS(CFG.max>1?2:1,'pick',CFG.max>1?'friends':'staff'),
- '최종확인':()=>{mkS(CFG.max>1?2:1,'review',CFG.max>1?'friends':'staff',CFG.max>1?0:'W');ackSim()},'횟수초과':()=>{mkS(0,'prep');S.slots[0]={stage:'denied',id:188,why:'limit'};R()},'코인부족':()=>{mkS(0,'prep');S.slots[0]={stage:'denied',id:209,why:'low'};R()},'정지확인':()=>stopArm(),'오류':()=>$('#er').classList.add('on')};
-Object.keys(DEMO).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{stopNo();DEMO[k]();};$('#dv').appendChild(b)});
-(async()=>{const s=await API.state();if(s&&s.phase&&s.slots&&s.slots.length===CFG.max&&(s.phase!=='prep'||s.slots.some(Boolean))){S=s;S.slots=S.slots.map(x=>x&&['scanning','wait'].includes(x.stage)?null:x);toast('이전 진행 상태를 불러왔습니다');if(S.phase==='review')ackSim()}R()})();
+const stopOk=()=>run(async()=>{await ST.gameAbort();stopNo();await sync()});
+/* ===== 시작 ===== */
+const poll=async()=>{if(document.hidden||busy||bad)return;try{await sync()}catch(e){const k=e&&e.code;if(k==='UNAUTHORIZED'||k==='STALE_TOKEN'){location.replace('/staff/');return}if(++fails>=3)$('#er').classList.add('on')}};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
+(async()=>{if(bad)return;try{if(await sync())toast('진행 중인 게임을 불러왔습니다')}catch(e){fail(e)}setInterval(poll,2000)})();
 </script></body></html>

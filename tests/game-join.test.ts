@@ -91,6 +91,32 @@ describe('game/scan', () => {
   });
 });
 
+describe('game/scan: QR(uid)', () => {
+  const UID = '0123456789ABCDEF'.replace(/[IL]/g, '1');
+  it('uid로 카드를 찾아 scan_card에 번호를 넘긴다 (소문자도 허용)', async () => {
+    m.tables = { cards: { data: { id: 47 }, error: null } };
+    m.rpc.mockResolvedValue({ match_id: 12, slot: 0 });
+    const res = await call('/api/game/scan', { body: { uid: UID.toLowerCase() }, token: await gameStaff() });
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toMatchObject({ card_id: 47, slot: 0 });
+    expect(m.rpc).toHaveBeenCalledWith('scan_card', { p_station: 'hg21', p_card_id: 47 });
+  });
+  it('모르는 uid는 404 NOT_FOUND, DB 함수를 부르지 않는다', async () => {
+    m.tables = { cards: { data: null, error: null } };
+    const res = await call('/api/game/scan', { body: { uid: UID }, token: await gameStaff() });
+    expect(res.statusCode).toBe(404);
+    expect(res.body.code).toBe('NOT_FOUND');
+    expect(m.rpc).not.toHaveBeenCalled();
+  });
+  it('모양이 틀린 uid(길이, 금지 글자)는 404 NOT_FOUND, 조회도 안 함', async () => {
+    for (const bad of ['ABC', 'IIIIIIIIIIIIIIII', 'OOOOOOOOOOOOOOOO', 123, '0123456789ABCDEFG']) {
+      const res = await call('/api/game/scan', { body: { uid: bad }, token: await gameStaff() });
+      expect(res.body.code).toBe('NOT_FOUND');
+    }
+    expect(m.rpc).not.toHaveBeenCalled();
+  });
+});
+
 describe('game/accept, reject', () => {
   it('내 스테이션 매치면 실행한다', async () => {
     setCards();

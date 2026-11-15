@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 이용 제한</title>
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><script>/* 이미지 슬롯: 파일명은 여기서 바꿔요. 파일이 없으면 이모지가 대신 보여요 */var IMG="/img/",ICON={"ban": "i-ban.png", "bye": "i-bye.png", "kick": "i-kicked.png", "exp": "i-expired.png", "err": "i-error.png"},FB={"ban": "⛔", "bye": "👋", "kick": "📱", "exp": "⏳", "err": "🌐"};function ico(k){return'<img class="ico" src="'+IMG+ICON[k]+'" data-f="'+FB[k]+'" alt="" onerror="icoF(this)">'}function icoF(i){i.replaceWith(document.createTextNode(i.dataset.f))}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 이용 제한</title>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
 :root{--bg:#07080b;--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -26,7 +26,7 @@ button{font:inherit;cursor:pointer}
 .kp{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:auto}
 .k{background:none;border:0;color:var(--ink);font:500 24px 'Space Grotesk';height:58px;border-radius:29px}
 .coin{width:34px;height:34px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff2b8,#f0a83a 65%,#b9741a);box-shadow:0 0 14px #f0a83a88;animation:sc 2.4s linear infinite}@keyframes sc{50%{transform:scaleX(.15)}}
-</style></head><body><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div><script src="/js/casino-api.js"></script>
+.ico{width:1em;height:1em;object-fit:contain;vertical-align:-.12em;margin:0 .06em}</style></head><body><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span><div class="idb"><small>식별번호</small><b>047</b></div></div></div><script src="/js/casino-api.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 (()=>{const c=$('#bg'),x=c.getContext('2d'),S=22,rs=()=>{c.width=innerWidth;c.height=innerHeight};rs();addEventListener('resize',rs);
@@ -37,11 +37,11 @@ function go(n){$$('.s').forEach(e=>e.classList.toggle('on',e.id===n));$$('#dv bu
 function dev(o){for(const k in o){const e=document.createElement('button');e.textContent=o[k];e.dataset.n=k;e.onclick=()=>window.demo&&demo[k]?demo[k]():go(k);$('#dv').appendChild(e)}}
 function keypad(el,left,k,d,l){el.className='kp';[1,2,3,4,5,6,7,8,9,'L',0,'D'].forEach(v=>{const b=document.createElement('button');b.className='k rp';b.textContent=v==='L'?left:v==='D'?'⌫':v;if(v==='L'&&!left)b.style.visibility='hidden';b.onclick=()=>v==='D'?d():v==='L'?l():k(String(v));el.appendChild(b)})}
 
-mk('exited','👋','퇴장 처리되었습니다','재참여가 불가능합니다.<br>이용해주셔서 감사합니다.');
-mk('banned','⛔👋','이용이 제한되었습니다','운영진에 의해 카드 이용이 제한되었습니다.<br>발급 데스크로 문의해주세요.');
-mk('kicked','📱','다른 기기에서 연결되었습니다','이 기기의 이용이 종료되었습니다.');
-mk('expired','⏳','이용 시간이 종료되었습니다','해당 회차 운영이 마감되었습니다.<br>참여해주셔서 감사합니다.');
-mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
+mk('exited',ico('bye'),'퇴장 처리되었습니다','재참여가 불가능합니다.<br>이용해주셔서 감사합니다.');
+mk('banned',ico('ban')+ico('bye'),'이용이 제한되었습니다','운영진에 의해 카드 이용이 제한되었습니다.<br>발급 데스크로 문의해주세요.');
+mk('kicked',ico('kick'),'다른 기기에서 연결되었습니다','이 기기의 이용이 종료되었습니다.');
+mk('expired',ico('exp'),'이용 시간이 종료되었습니다','해당 회차 운영이 마감되었습니다.<br>참여해주셔서 감사합니다.');
+mk('err',ico('err'),'오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
 const API=CasinoAPI,pad=n=>String(n).padStart(3,'0'),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lostCode=e=>e&&(e.code==='UNAUTHORIZED'||e.code==='STALE_TOKEN');
 const SEC=['exited','banned','kicked','expired'];

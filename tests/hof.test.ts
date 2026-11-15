@@ -3,6 +3,7 @@ import { randomBytes } from 'node:crypto';
 import { signAccess } from '../lib/auth';
 import { encrypt } from '../lib/crypto';
 import { ApiError } from '../lib/errors';
+import { WINNER_RANKS } from '../lib/routes/hof-winner-pii';
 
 type Res = { data: unknown; error: unknown };
 const m = vi.hoisted(() => ({
@@ -187,14 +188,14 @@ describe('hof/winner-pii', () => {
     expect(m.calls).toHaveLength(0);
   });
   it('우승 순위 밖의 카드는 403, 기록도 남기지 않음', async () => {
-    seed(11);
+    seed(WINNER_RANKS + 1);
     expect((await go({ card_id: 11, pin: '4821' })).statusCode).toBe(403);
     m.tables.hof_rank = ok(null); // 이용 제한 카드 등 순위에 없음
     expect((await go({ card_id: 11, pin: '4821' })).statusCode).toBe(403);
     expect(writes()).toHaveLength(0);
   });
-  it('딱 10위는 허용', async () => {
-    seed(10);
+  it('딱 마지막 우승 순위는 허용', async () => {
+    seed(WINNER_RANKS);
     expect((await go({ card_id: 11, pin: '4821' })).statusCode).toBe(200);
   });
   it('열람 기록을 못 남기면 개인정보도 주지 않는다', async () => {

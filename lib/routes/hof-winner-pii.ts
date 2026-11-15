@@ -6,7 +6,7 @@ import { handle } from '../http';
 import { parseCardId } from '../validate';
 
 /** 개인정보를 볼 수 있는 순위 (이 순위 안의 카드만 조회 가능). 상품 수에 맞게 조정 */
-export const WINNER_RANKS = 10;
+export const WINNER_RANKS = 3;
 
 /** tbs1: 우승자 실명·학번 열람. PIN 재입력 필수, 모든 열람은 audit_log에 기록 */
 export default handle(['POST'], async ({ req, body, ip }) => {

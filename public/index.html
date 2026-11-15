@@ -33,7 +33,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 0 6px}label:firs
 .in{width:100%;padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.3);color:#fff;font:16px Inter}
 .em{color:var(--red);font-size:12px;margin-top:10px;min-height:16px}
 .sn{font:700 34px 'Space Grotesk';letter-spacing:.18em;color:var(--amb);padding:16px}
-.ico{width:1em;height:1em;object-fit:contain;vertical-align:-.12em}#bgi{position:fixed;inset:0;z-index:0;background:var(--bg) url(/img/background.png) center/cover no-repeat}</style></head><body><div id="bgi"></div><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span></div></div>
+.ico{width:1em;height:1em;object-fit:contain;vertical-align:-.12em}#bgi{--dim:.25;position:fixed;inset:0;z-index:0;background:var(--bg) url(/img/background.png) center/cover no-repeat}#bgi::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--dim))}</style></head><body><div id="bgi"></div><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span></div></div>
 <section class="s on" id="chk"><div class="mid"><div class="sp"></div><h1>세션 확인 중</h1><p>이 기기의 로그인 정보를 확인하고 있어요.</p></div></section>
 <section class="s" id="auto"><div class="mid"><div class="sp"></div><h1>이미 로그인되어 있어요</h1><p>기존 카드로 이동합니다.</p></div></section>
 <section class="s" id="input"><h1>식별번호 입력</h1><p>발급 데스크에서 받은 3자리 번호를 입력하세요.</p>
@@ -42,7 +42,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 0 6px}label:firs
 <section class="s" id="load"><div class="mid"><div class="sp"></div><h1>확인 중</h1><p>통신 상태에 따라 몇 초 걸릴 수 있어요.</p></div></section>
 <section class="s" id="wait"><div class="mid"><div class="sp"></div><h1>담당 스태프 확인 대기</h1><p>발급 데스크 화면에 아래 이름이 뜨면<br>스태프에게 보여주고 확인을 요청해주세요.</p><div class="nz"><div class="gl center sn" id="sn">abcde</div></div><p id="wx" style="margin-top:16px"></p></div></section>
 <section class="s" id="find"><h1>기존 카드 찾기</h1><p>발급 때 입력한 학번과 이름을 입력하세요.</p>
-<div class="nz"><div class="gl c"><label>학번 (숫자 5자리)</label><input class="in" id="fs" inputmode="numeric" maxlength="5"><label>이름 (한글 2~5자)</label><input class="in" id="fn" maxlength="5"><div class="em" id="fe"></div></div></div>
+<div class="nz"><div class="gl c"><label>학번 (숫자 5자리)</label><input class="in" id="fs" inputmode="numeric" maxlength="5"><label>이름 (한글 2~5자)</label><input class="in" id="fn" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="em" id="fe"></div></div></div>
 <div class="row" style="margin-top:auto"><button class="btn" onclick="go('input')">뒤로</button><button class="btn bg" onclick="find()">찾기</button></div></section>
 <section class="s" id="found"><div class="mid"><div class="nz"><div class="gl c center"><p>기존 식별번호</p><div class="idb" style="text-align:center"><b style="font-size:52px">047</b></div><p style="margin-top:14px">이 번호로 새 기기를 연결합니다.<br>스태프가 학생증으로 확인합니다.</p><button class="btn bg" onclick="$('#sn').textContent=rn();go('wait')">이 번호로 재연결</button></div></div></div></section>
 <script src="/js/casino-api.js"></script>
@@ -71,8 +71,8 @@ const CK='casino.claim',saveC=c=>{try{localStorage.setItem(CK,JSON.stringify({..
 let busy=0,W=null;
 function rb(){$$('.bxs b').forEach((b,i)=>{b.textContent=dg[i]||'';b.className=i===dg.length?'f':''})}
 keypad($('#kp'),'',d=>{if(busy||dg.length>=3)return;dg.push(d);rb();if(dg.length===3)setTimeout(submit,180)},()=>{if(busy)return;dg.pop();rb()});
-const FS=$('#fs'),FN=$('#fn');let comp=0;const hg=()=>FN.value=FN.value.replace(/[^가-힣]/g,'').slice(0,5);
-FN.addEventListener('compositionstart',()=>comp=1);FN.addEventListener('compositionend',()=>{comp=0;hg()});FN.addEventListener('input',()=>{if(!comp)hg()});FS.addEventListener('input',()=>FS.value=FS.value.replace(/\D/g,'').slice(0,5));
+const FS=$('#fs'),FN=$('#fn');let comp=0;const hg=()=>{const v=FN.value.replace(/[^가-힣]/g,'').slice(0,5);if(v!==FN.value)FN.value=v};
+FN.addEventListener('compositionstart',()=>comp=1);FN.addEventListener('compositionend',()=>{comp=0;setTimeout(hg,0)});FN.addEventListener('input',e=>{if(!comp&&!e.isComposing)hg()});FN.addEventListener('blur',hg);FS.addEventListener('input',()=>{const v=FS.value.replace(/\D/g,'').slice(0,5);if(v!==FS.value)FS.value=v});
 window.hook=n=>{if(n==='input'){dg.length=0;rb()}};
 const retry=async f=>{for(let i=0;i<3;i++){try{return await f(rn())}catch(e){if(!e||e.code!=='SESSION_NAME_TAKEN'||i===2)throw e}}};
 function netErr(e){return !e||e.code==='NETWORK'||e.code==='SERVER'||e.status>=500}

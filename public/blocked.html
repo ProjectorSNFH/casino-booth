@@ -38,7 +38,7 @@ function dev(o){for(const k in o){const e=document.createElement('button');e.tex
 function keypad(el,left,k,d,l){el.className='kp';[1,2,3,4,5,6,7,8,9,'L',0,'D'].forEach(v=>{const b=document.createElement('button');b.className='k rp';b.textContent=v==='L'?left:v==='D'?'⌫':v;if(v==='L'&&!left)b.style.visibility='hidden';b.onclick=()=>v==='D'?d():v==='L'?l():k(String(v));el.appendChild(b)})}
 
 mk('exited','👋','퇴장 처리되었습니다','재참여가 불가능합니다.<br>이용해주셔서 감사합니다.');
-mk('banned','⛔','이용이 제한되었습니다','운영진에 의해 카드 이용이 제한되었습니다.<br>발급 데스크로 문의해주세요.');
+mk('banned','⛔👋','이용이 제한되었습니다','운영진에 의해 카드 이용이 제한되었습니다.<br>발급 데스크로 문의해주세요.');
 mk('kicked','📱','다른 기기에서 연결되었습니다','이 기기의 이용이 종료되었습니다.');
 mk('expired','⏳','이용 시간이 종료되었습니다','해당 회차 운영이 마감되었습니다.<br>참여해주셔서 감사합니다.');
 mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');

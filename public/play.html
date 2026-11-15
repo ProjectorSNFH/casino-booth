@@ -25,11 +25,21 @@ button{font:inherit;cursor:pointer}
 .sp{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:var(--amb);animation:r .85s linear infinite;margin:0 auto 20px}@keyframes r{to{transform:rotate(360deg)}}
 .kp{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:auto}
 .k{background:none;border:0;color:var(--ink);font:500 24px 'Space Grotesk';height:58px;border-radius:29px}
-.coin{width:34px;height:34px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff2b8,#f0a83a 65%,#b9741a);box-shadow:0 0 14px #f0a83a88;animation:sc 2.4s linear infinite}@keyframes sc{50%{transform:scaleX(.15)}}
+.coin{--d:34px;width:var(--d);height:var(--d);flex:none;position:relative;perspective:calc(var(--d)*7);filter:drop-shadow(0 0 calc(var(--d)*.22) #f0a83a77)}
+.chip{position:absolute;inset:0;transform-style:preserve-3d;animation:spin 3.4s linear infinite}
+@keyframes spin{from{transform:rotateX(-16deg) rotateY(0)}to{transform:rotateX(-16deg) rotateY(360deg)}}
+.cf{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;transform:translateZ(calc(var(--d)*.07));background:repeating-conic-gradient(from -7.5deg,#fff6d6 0 15deg,#d4821a 15deg 30deg)}
+.cf.bk{transform:rotateY(180deg) translateZ(calc(var(--d)*.07))}
+.cf::before{content:"";position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle at 34% 28%,#ffe39a,#f0a83a 55%,#b9741a);box-shadow:0 0 0 calc(var(--d)*.03) #fff6d6,inset 0 0 0 calc(var(--d)*.035) #fff6d6,inset 0 0 calc(var(--d)*.12) #7a4a0c88}
+.cf::after{content:"♠︎";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 calc(var(--d)*.34)/1 'Space Grotesk',serif;color:#8a5410;text-shadow:0 1px 0 #ffe9ad}
+.rim{position:absolute;inset:0;transform-style:preserve-3d}
+.rim i{position:absolute;left:50%;top:50%;width:calc(var(--d)*.1375);height:calc(var(--d)*.14);margin:calc(var(--d)*-.07) 0 0 calc(var(--d)*-.06875);transform:rotateZ(calc(var(--i)*15deg)) translateY(calc(var(--d)*-.5)) rotateX(90deg);background:linear-gradient(90deg,#c9780f,#f0a83a 50%,#a8620f)}
+.rim i:nth-child(4n+1),.rim i:nth-child(4n+2){background:linear-gradient(90deg,#e8d39b,#fff6d6 50%,#cdb273)}
+@media (prefers-reduced-motion:reduce){.chip{animation:none;transform:rotateX(-16deg) rotateY(-28deg)}}
 
 .qrc{display:flex;align-items:center;gap:16px;padding:16px}.qrw{background:#fff;border-radius:14px;overflow:hidden;flex:none;line-height:0}.qrw svg{width:128px;height:128px;display:block}.uidt{white-space:nowrap}#ordh{margin:12px 4px 0;font-size:12.5px;color:var(--mut);text-align:center;line-height:1.6}
 .uidt{font:600 19px/1.5 'Space Grotesk';letter-spacing:.14em;flex:1;text-align:center}
-.coinc{padding:14px 18px 16px;text-align:center}.coinc small{display:block;text-align:left;font-size:12px;color:var(--mut)}.coinc .coin{width:60px;height:60px;margin:6px auto 8px}.coinc b{font:700 40px 'Space Grotesk';color:var(--amb)}
+.coinc{padding:14px 18px 16px;text-align:center}.coinc small{display:block;text-align:left;font-size:12px;color:var(--mut)}.coinc .coin{--d:64px;margin:8px auto 12px}.coinc b{font:700 40px 'Space Grotesk';color:var(--amb)}
 #ordb{margin-top:14px}
 .big{font:700 54px 'Space Grotesk';color:var(--amb);margin:8px 0}
 .cap{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:5;border-radius:28px;display:none}.cap.on{display:block}
@@ -146,5 +156,6 @@ const submitOrder=()=>run(async()=>{const items=Object.entries(cart).filter(([,q
  catch(e){const k=e&&e.code;if(k==='SOLD_OUT'){toast('품절된 상품이 있어요'+(e.detail?': '+e.detail:''),3500);await loadProds();return}
   if(k==='UNAUTHORIZED'||k==='STALE_TOKEN')return;throw e}});
 const cancelOrder=()=>run(async()=>{await API.me.cancelOrder();show('home');await refresh()});
+const CHIP='<div class="chip"><div class="cf"></div><div class="cf bk"></div><div class="rim">'+Array.from({length:24},(_,i)=>`<i style="--i:${i}"></i>`).join('')+'</div></div>';$$('.coin').forEach(e=>e.innerHTML=CHIP);
 (async()=>{if(!API.meSession())return location.replace('/');go('home');cv();poll()})();
 </script></body></html>

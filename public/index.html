@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 입장</title>
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><script>/* 이미지 슬롯: 파일명은 여기서 바꿔요. 파일이 없으면 이모지가 대신 보여요 */var IMG="/img/",ICON={"nf": "i-notfound.png", "use": "i-inuse.png", "cf": "i-conflict.png", "mis": "i-mismatch.png", "err": "i-error.png", "warn": "i-warn.png", "rej": "i-reject.png", "exp": "i-expired.png", "win": "i-win.png", "lose": "i-lose.png", "draw": "i-draw.png", "trophy": "i-trophy.png", "m1": "i-medal1.png", "m2": "i-medal2.png", "m3": "i-medal3.png", "m4": "i-medal.png"},FB={"nf": "🔎", "use": "📵", "cf": "⚡", "mis": "❌", "err": "🌐", "warn": "⚠️", "rej": "✋", "exp": "⏳", "win": "🏆", "lose": "😢", "draw": "🤝", "trophy": "🏆", "m1": "🥇", "m2": "🥈", "m3": "🥉", "m4": "🏅"};function ico(k){return'<img class="ico" src="'+IMG+ICON[k]+'" data-f="'+FB[k]+'" alt="" onerror="icoF(this)">'}function icoF(i){i.replaceWith(document.createTextNode(i.dataset.f))}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CASINO · 입장</title>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>
 :root{--bg:#07080b;--ink:#f1f3f6;--mut:#9aa1ab;--amb:#f0a83a;--red:#ff6b7a;--grn:#5fe0a0}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -33,7 +33,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 0 6px}label:firs
 .in{width:100%;padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.3);color:#fff;font:16px Inter}
 .em{color:var(--red);font-size:12px;margin-top:10px;min-height:16px}
 .sn{font:700 34px 'Space Grotesk';letter-spacing:.18em;color:var(--amb);padding:16px}
-</style></head><body><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span></div></div>
+.ico{width:1em;height:1em;object-fit:contain;vertical-align:-.12em}#bgi{position:fixed;inset:0;z-index:0;background:var(--bg) url(/img/background.png) center/cover no-repeat}</style></head><body><div id="bgi"></div><canvas id="bg"></canvas><div class="app"><div class="nz hd"><div class="gl"><span class="logo">CASINO</span></div></div>
 <section class="s on" id="chk"><div class="mid"><div class="sp"></div><h1>세션 확인 중</h1><p>이 기기의 로그인 정보를 확인하고 있어요.</p></div></section>
 <section class="s" id="auto"><div class="mid"><div class="sp"></div><h1>이미 로그인되어 있어요</h1><p>기존 카드로 이동합니다.</p></div></section>
 <section class="s" id="input"><h1>식별번호 입력</h1><p>발급 데스크에서 받은 3자리 번호를 입력하세요.</p>
@@ -44,7 +44,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 0 6px}label:firs
 <section class="s" id="find"><h1>기존 카드 찾기</h1><p>발급 때 입력한 학번과 이름을 입력하세요.</p>
 <div class="nz"><div class="gl c"><label>학번 (숫자 5자리)</label><input class="in" id="fs" inputmode="numeric" maxlength="5"><label>이름 (한글 2~5자)</label><input class="in" id="fn" maxlength="5"><div class="em" id="fe"></div></div></div>
 <div class="row" style="margin-top:auto"><button class="btn" onclick="go('input')">뒤로</button><button class="btn bg" onclick="find()">찾기</button></div></section>
-<section class="s" id="found"><div class="mid"><div class="nz"><div class="gl c center"><p>기존 식별번호</p><div class="idb" style="text-align:center"><b style="font-size:52px">000</b></div><p style="margin-top:14px">이 번호로 새 기기를 연결합니다.<br>스태프가 학생증으로 확인합니다.</p><button class="btn bg" onclick="$('#sn').textContent=rn();go('wait')">이 번호로 재연결</button></div></div></div></section>
+<section class="s" id="found"><div class="mid"><div class="nz"><div class="gl c center"><p>기존 식별번호</p><div class="idb" style="text-align:center"><b style="font-size:52px">047</b></div><p style="margin-top:14px">이 번호로 새 기기를 연결합니다.<br>스태프가 학생증으로 확인합니다.</p><button class="btn bg" onclick="$('#sn').textContent=rn();go('wait')">이 번호로 재연결</button></div></div></div></section>
 <script src="/js/casino-api.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -56,15 +56,15 @@ function go(n){$$('.s').forEach(e=>e.classList.toggle('on',e.id===n));$$('#dv bu
 function dev(o){for(const k in o){const e=document.createElement('button');e.textContent=o[k];e.dataset.n=k;e.onclick=()=>window.demo&&demo[k]?demo[k]():go(k);$('#dv').appendChild(e)}}
 function keypad(el,left,k,d,l){el.className='kp';[1,2,3,4,5,6,7,8,9,'L',0,'D'].forEach(v=>{const b=document.createElement('button');b.className='k rp';b.textContent=v==='L'?left:v==='D'?'⌫':v;if(v==='L'&&!left)b.style.visibility='hidden';b.onclick=()=>v==='D'?d():v==='L'?l():k(String(v));el.appendChild(b)})}
 
-mk('e-nf','🔎','발급되지 않은 번호입니다','식별번호를 다시 확인하거나 발급 데스크에 문의해주세요.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
-mk('e-use','📵','이미 사용 중인 번호입니다','다른 기기에서 사용 중이에요. 기기를 바꿨다면 기존 카드 찾기를 이용하세요.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
-mk('e-cf','⚡','동시 요청이 감지되었습니다','다른 사람이 같은 번호로 동시에 요청했습니다.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
-mk('e-mis','❌','정보가 일치하지 않습니다','학번과 이름을 다시 확인해주세요.','<button class="btn" onclick="go(\'find\')">다시 입력하기</button>');
-mk('err','🌐','오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
+mk('e-nf',ico('nf'),'발급되지 않은 번호입니다','식별번호를 다시 확인하거나 발급 데스크에 문의해주세요.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
+mk('e-use',ico('use'),'이미 사용 중인 번호입니다','다른 기기에서 사용 중이에요. 기기를 바꿨다면 기존 카드 찾기를 이용하세요.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
+mk('e-cf',ico('cf'),'동시 요청이 감지되었습니다','다른 사람이 같은 번호로 동시에 요청했습니다.','<button class="btn" onclick="go(\'input\')">다시 입력하기</button>');
+mk('e-mis',ico('mis'),'정보가 일치하지 않습니다','학번과 이름을 다시 확인해주세요.','<button class="btn" onclick="go(\'find\')">다시 입력하기</button>');
+mk('err',ico('err'),'오류가 발생했습니다','연결 지연 또는 연결하는 중에 오류가 발생하였습니다.','<button class="btn" onclick="location.reload()">↻ 새로고침</button>');
 const API=CasinoAPI,pad=n=>String(n).padStart(3,'0'),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lostCode=e=>e&&(e.code==='UNAUTHORIZED'||e.code==='STALE_TOKEN');
-mk('e-msg','⚠️','','','<button class="btn" id="mb">확인</button>');
-function showMsg(ic,t,d,back){const s=$('#e-msg');s.querySelector('.ic').textContent=ic;s.querySelector('h1').textContent=t;s.querySelector('p').innerHTML=esc(d);$('#mb').onclick=()=>go(back);go('e-msg')}
+mk('e-msg',ico('warn'),'','','<button class="btn" id="mb">확인</button>');
+function showMsg(ic,t,d,back){const s=$('#e-msg');s.querySelector('.ic').innerHTML=ic;s.querySelector('h1').textContent=t;s.querySelector('p').innerHTML=esc(d);$('#mb').onclick=()=>go(back);go('e-msg')}
 const dg=[],rn=()=>Array.from(crypto.getRandomValues(new Uint8Array(5)),b=>'abcdefghijklmnopqrstuvwxyz'[b%26]).join('');
 const CK='casino.claim',saveC=c=>{try{localStorage.setItem(CK,JSON.stringify({...c,at:Date.now()}))}catch(e){}},clrC=()=>{try{localStorage.removeItem(CK)}catch(e){}},
  loadC=()=>{try{const c=JSON.parse(localStorage.getItem(CK)||'null');return c&&c.claim_id&&c.secret&&Date.now()-c.at<15*60e3?c:null}catch(e){return null}};
@@ -87,22 +87,22 @@ async function submit(){if(busy)return;const id=Number(dg.join(''));busy=1;go('l
  try{if(id<1)throw {code:'NOT_ISSUED'};const c=await retry(n=>API.claim(id,n));begin({kind:'claim',card_id:id,...c})}
  catch(e){console.error(e);const k=e&&e.code;
   if(k==='NOT_ISSUED'||k==='NOT_FOUND'||k==='BAD_CARD_ID')go('e-nf');else if(k==='IN_USE')go('e-use');else if(k==='CLAIM_CONFLICT')go('e-cf');
-  else if(netErr(e))go('err');else showMsg('⚠️','진행할 수 없어요',e.message||'잠시 후 다시 시도해주세요.','input')}
+  else if(netErr(e))go('err');else showMsg(ico('warn'),'진행할 수 없어요',e.message||'잠시 후 다시 시도해주세요.','input')}
  finally{busy=0}}
 async function find(){if(busy)return;if(!/^\d{5}$/.test(FS.value)||!/^[가-힣]{2,5}$/.test(FN.value)){$('#fe').textContent='학번은 숫자 5자리, 이름은 한글 2~5자로 입력해주세요.';return}
  $('#fe').textContent='';busy=1;go('load');
  try{const c=await retry(n=>API.reconnect(FS.value,FN.value.normalize('NFC'),n));begin({kind:'reconnect',...c})}
- catch(e){console.error(e);const k=e&&e.code;if(k==='INFO_MISMATCH')go('e-mis');else if(netErr(e))go('err');else showMsg('⚠️','진행할 수 없어요',e.message||'잠시 후 다시 시도해주세요.','find')}
+ catch(e){console.error(e);const k=e&&e.code;if(k==='INFO_MISMATCH')go('e-mis');else if(netErr(e))go('err');else showMsg(ico('warn'),'진행할 수 없어요',e.message||'잠시 후 다시 시도해주세요.','find')}
  finally{busy=0}}
 function begin(c){saveC(c);$('#sn').textContent=c.session_name;$('#wx').innerHTML=c.kind==='reconnect'&&c.card_id?`기존 식별번호 <b style="color:var(--amb)">${pad(c.card_id)}</b> 재연결 요청 중<br>스태프가 학생증으로 확인합니다.`:'';go('wait');
  if(W)W.stop();W=API.waitClaim(c,{every:2000});
  W.then(s=>{const k=s.status;if(k==='stopped')return;clrC();
   if(k==='confirmed')return toApp('/play.html');
   if(k==='ended')return location.replace('/blocked.html#exited');
-  if(k==='rejected')return showMsg('✋','요청이 거절되었어요','스태프가 요청을 거절했습니다. 발급 데스크에 문의해주세요.','input');
-  if(k==='cancelled')return showMsg('✋','요청이 취소되었어요','발급 데스크에 문의해주세요.','input');
-  showMsg('⏳','요청 시간이 지났어요','처음부터 다시 진행해주세요.','input')},
-  e=>{console.error(e);if(e&&(e.code==='UNAUTHORIZED'||e.code==='NO_CLAIM')){clrC();return showMsg('⏳','요청 시간이 지났어요','처음부터 다시 진행해주세요.','input')}go('err')})}
+  if(k==='rejected')return showMsg(ico('rej'),'요청이 거절되었어요','스태프가 요청을 거절했습니다. 발급 데스크에 문의해주세요.','input');
+  if(k==='cancelled')return showMsg(ico('rej'),'요청이 취소되었어요','발급 데스크에 문의해주세요.','input');
+  showMsg(ico('exp'),'요청 시간이 지났어요','처음부터 다시 진행해주세요.','input')},
+  e=>{console.error(e);if(e&&(e.code==='UNAUTHORIZED'||e.code==='NO_CLAIM')){clrC();return showMsg(ico('exp'),'요청 시간이 지났어요','처음부터 다시 진행해주세요.','input')}go('err')})}
 async function boot(){const s=API.meSession();
  if(!s){const c=loadC();return c?begin(c):go('input')}
  try{route(await API.me.state())}catch(e){console.error(e);if(lostCode(e)){API.logout('me');const c=loadC();return c?begin(c):go('input')}go('err')}}
